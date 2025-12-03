@@ -1,0 +1,197 @@
+body {
+    background-color: rgba(255, 228, 196, 0);
+
+}
+body {
+    background-image: url(images/backgroundtowebsite.jpg);
+    background-size: cover;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.container{
+    display: grid;
+    /*grid-template-columns: auto 20fr 20fr; /*første kolone er auto, anden er 6fr og sidste er 4fr*/
+    grid-template-areas: /*kolone 1 er header, 2 kolone er header 2 osv (lodret)*/ 
+    'header' 'header' 'header'
+    'main' 'main' 'main'
+    'footer' 'footer' 'footer';
+    grid-template-rows: 250px auto 100px; /*header er 250px, main er auto og footer er 100px*/
+    width: 100vw;
+    max-width: 1500px; /*viden er 100% men kan ikke overstige 1500px*/
+    margin:auto; /*sørger for at alt er centreret uanset brede*/
+    padding: 10px 20px 30px 40px; /*afstanden mellem content og border*/
+    gap: 20px; /*viser hvor stor afstand de er imellem rows og columns*/
+    background-color: rgba(245, 222, 179, 0);
+    height: auto;
+    min-height: 100vh;
+}
+.header {
+    grid-area: header;
+    display: grid;
+    grid-template-columns: auto 1fr auto; /*auto måske igen*/
+    align-items: center;
+    padding: 10px 20px;
+    background-color:#2925257c;
+    min-height: 100px;
+
+}
+.logo {
+    max-width: 250px;
+    flex-direction: column;
+
+}
+.header-buttons {
+    justify-self: center;
+    display:flex;
+    gap: 20px;
+    flex-direction: row;
+    
+}
+.header-buttons button {
+
+    font-size: 2rem;
+    padding: 1em 1em 1em 1em;
+    background-color: #462829;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer; /*viser mus over knappen*/
+    flex-direction: column;
+}
+
+.header-buttons button:hover {/*anden end hover?*/
+    background-color: #172834;
+    color: white;
+
+} 
+
+.main {
+    grid-area: main;
+    padding: 30px;
+
+}
+.main flex {
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+
+
+
+
+
+
+.footer {
+    grid-area: footer;
+    display: grid;
+    background-color:#4628297c;
+    color: white;
+    text-align: left;
+    padding: 30px 20px;
+}
+
+.footer-buttons {
+    margin-top: 40px; /* afstand fra tekst til knapper */
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 25px;
+    margin: 5px;
+    color: rgb(14, 1, 1);
+    border: 2px solid white;
+    background-color: #462829;
+    text-decoration: none;
+    border-radius: 10px;
+    letter-spacing: 1px;
+    transition: 0.3s ease;
+    text-align: left;
+}
+
+.btn:hover {
+    background-color: white;
+    color: #172834;
+    cursor: pointer;
+}
+
+
+
+
+    
+@media (max-widht:1200x) {
+    header {
+        grid-template-columns: auto 6fr 4fr;
+        grid-template-rows: auto auto;
+        row-gap: 20px;
+        flex-direction: column;
+        text-align: center;
+    }
+
+}
+/*@media (min-widht:700px) {
+    header{
+        grid-template-columns: auto 6fr 4fr;
+        grid-template-rows: auto;
+        row-gap: 20px;
+        text-align: center;
+        flex-direction: column;
+
+    }
+    .logo {
+        max-width: 150px;
+        flex-direction: row;
+
+    }
+    .header-buttons button {
+        font-size: 0,5rem;
+        padding: 0.5 0.5 0.5 0.5;
+        flex-direction: row;
+    }
+}
+@media (max-widht:700px) {
+    .header{
+        grid-template-rows: auto;
+        grid-template-columns: 1fr;
+        row-gap: 10;
+        flex-direction: row;
+    }
+    .logo {
+        max-width: 100px;
+        flex-direction: row;
+    }
+    .header-buttons button {
+        font-size: 0,3rem;
+        padding:0,1 0,1 0,1 0,1;
+        flex-direction: row;
+    }*/
+
+@media (max-width:700px) {
+    .header {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+        row-gap: 15px;
+        text-align: center;
+        flex-direction: column;
+    }
+}
+@media (max-width:1024px) {
+    .header{
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+        row-gap: 20px;
+        flex-direction: column;
+    }
+    .logo {
+        max-width: 150px;
+        flex-direction: row;
+    }
+    .header-buttons button {
+        font-size:0.85rem;
+        padding:0.7em 1.2em;
+        flex-direction: row;
+        
+    }
+}
