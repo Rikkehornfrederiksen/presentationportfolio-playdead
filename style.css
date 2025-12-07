@@ -79,20 +79,47 @@ body {
     padding: 30px;
 
 }
-.main flex {
+.main-flex {
     display:flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
 }
-* {
-    box-sizing: border-box;
+.video-title {
+    text-align: left;
+    margin-bottom: 10px;
+    font-family:"Montserrat", sans-serif; 
+    font-size: 30px;
+    color: aliceblue;
+    display: flex;
 }
+.video-container video {
+    width: 50%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+}
+
+
+.image-flex {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+.image-flex img {
+    width: 300px;
+    height: auto;
+
+}
+
+* {
+    box-sizing: border-box; 
+}
+
 .slider {
-    width: 600px;
+    width: 500px;
     text-align: center;
     overflow: hidden;
-    height: 300px;
     
 }
 .slides {
@@ -104,7 +131,8 @@ body {
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
 }
-.slides::-webkit-scroolbar {
+
+.slides::-webkit-scrollbar {
     width: 20px;
     height: 20px;
 }
@@ -118,9 +146,10 @@ body {
 .slides > div {
     scroll-snap-align: start;
     flex-shrink: 0;
-    width: 300px;
-    height: 300px;
+    width: 500px;
+    height: 500px;
     margin-right: 50px;
+    border-radius: 10px;
     background: #462829;
     transform-origin: center center;
     transform: scale(1);
@@ -132,9 +161,11 @@ body {
     align-items: center;
     font-size: 100px;
 }
-.slides > div:target {
 
+.slides > div:target {
+transform: scale(1.0);
 }
+
 .author-info {
     background-color: aliceblue;
     color: bisque;
@@ -169,11 +200,7 @@ body {
 .slider > a:focus {
     background: #c9d8e2;
 }
-@supports (scroll-snap-type) {
-    .slider > a {
-    display: none;
-}
-}
+
 
 .footer {
     grid-area: footer;
@@ -191,22 +218,10 @@ body {
 
 }
 
-
-
-
-
-
     
-@media (max-widht:1200x) {
-    header {
-        grid-template-columns: auto 6fr 4fr;
-        grid-template-rows: auto auto;
-        row-gap: 20px;
-        flex-direction: column;
-        text-align: center;
-    }
 
-}
+
+
 /*@media (min-widht:700px) {
     header{
         grid-template-columns: auto 6fr 4fr;
