@@ -1,5 +1,6 @@
 body {
     background-color: rgba(255, 228, 196, 0);
+   
 
 }
 body {
@@ -29,7 +30,6 @@ body {
 .header {
     grid-area: header;
     display: grid;
-    grid-template-columns: auto 1fr auto; /*auto måske igen*/
     align-items: center;
     padding: 10px 20px;
     background-color:#2925257c;
@@ -44,20 +44,21 @@ body {
 .header-buttons {
     justify-self: center;
     display:flex;
-    gap: 20px;
+    gap: 10px;
     flex-direction: row;
     
 }
 .header-buttons button {
 
     font-size: 2rem;
+    font-style: bold; 
     padding: 1em 1em 1em 1em;
-    background-color: #462829;
-    color: white;
+    background-color: #000000;
+    color: rgb(255, 255, 255);
     border: none;
     border-radius: 10px;
     cursor: pointer; /*viser mus over knappen*/
-    flex-direction: column;
+   
 }
 
 .header-buttons button:hover {/*anden end hover?*/
@@ -77,17 +78,100 @@ body {
     justify-content: center;
     gap: 20px;
 }
+* {
+    box-sizing: border-box;
+}
+.slider {
+    width: 600px;
+    text-align: center;
+    overflow: hidden;
+    height: 300px;
+    
+}
+.slides {
+    display: flex;
+
+    overflow-x: auto;
+    scroll-behavior: x mandatory;
+    
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+.slides::-webkit-scroolbar {
+    width: 20px;
+    height: 20px;
+}
+.slides::-webkit-scrollbar-thumb {
+    background-color: black;
+    border-radius: 10px;
+}
+.slides::-webkit-scrollbar-track {
+    background: transparent;
+}
+.slides > div {
+    scroll-snap-align: start;
+    flex-shrink: 0;
+    width: 300px;
+    height: 300px;
+    margin-right: 50px;
+    background: #462829;
+    transform-origin: center center;
+    transform: scale(1);
+    transition: transform 0.5;
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 100px;
+}
+.slides > div:target {
+
+}
+.author-info {
+    background-color: aliceblue;
+    color: bisque;
+    padding: 0.75rem;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    margin: 0;
+}
+.author-info a {
+  color: white;
+}
 
 
-
-
-
-
+.slider > a {
+  display: inline-flex;
+  width: 1.5rem;
+  height: 1.5rem;
+  background: white;
+  text-decoration: none;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin: 0 0 0.5rem 0;
+  position: relative;
+}
+.slider >a:active {
+    top:1px;
+}
+.slider > a:focus {
+    background: #c9d8e2;
+}
+@supports (scroll-snap-type) {
+    .slider > a {
+    display: none;
+}
+}
 
 .footer {
     grid-area: footer;
     display: grid;
-    background-color:#4628297c;
+    background-color:#2925257c;
     color: white;
     text-align: left;
     padding: 30px 20px;
@@ -95,6 +179,7 @@ body {
 
 .footer-buttons {
     margin-top: 40px; /* afstand fra tekst til knapper */
+    color: rgb(14, 1, 1);
 }
 
 .btn {
@@ -177,6 +262,13 @@ body {
         flex-direction: column;
     }
 }
+@media (max-width: 900px) {
+    .header-buttons {
+        flex-direction: column;
+        width: auto;
+        text-align: center;
+    }
+}
 @media (max-width:1024px) {
     .header{
         grid-template-columns: 1fr;
@@ -195,3 +287,4 @@ body {
         
     }
 }
+
