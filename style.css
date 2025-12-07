@@ -9,6 +9,9 @@ body {
     width: 100%;
     background-position: center;
     background-repeat: no-repeat;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    letter-spacing: 2px;
 }
 .container{
     display: grid;
@@ -23,7 +26,7 @@ body {
     margin:auto; /*sørger for at alt er centreret uanset brede*/
     padding: 10px 20px 30px 40px; /*afstanden mellem content og border*/
     gap: 20px; /*viser hvor stor afstand de er imellem rows og columns*/
-    background-color: rgba(245, 222, 179, 0);
+    background-color: rgba(36, 35, 35, 0);
     height: auto;
     min-height: 100vh;
 }
@@ -32,8 +35,9 @@ body {
     display: grid;
     align-items: center;
     padding: 10px 20px;
-    background-color:#2925257c;
+    background-color:#0202024b;
     min-height: 100px;
+  
 
 }
 .logo {
@@ -46,7 +50,7 @@ body {
     display:flex;
     gap: 10px;
     flex-direction: row;
-    
+   
 }
 .header-buttons button {
 
@@ -58,12 +62,15 @@ body {
     border: none;
     border-radius: 10px;
     cursor: pointer; /*viser mus over knappen*/
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    letter-spacing: 2px;
    
 }
 
 .header-buttons button:hover {/*anden end hover?*/
-    background-color: #172834;
-    color: white;
+    background-color: #310101;
+    color: rgb(255, 255, 255);
 
 } 
 
@@ -171,7 +178,7 @@ body {
 .footer {
     grid-area: footer;
     display: grid;
-    background-color:#2925257c;
+    background-color: #0202024b;
     color: white;
     text-align: left;
     padding: 30px 20px;
@@ -179,28 +186,12 @@ body {
 
 .footer-buttons {
     margin-top: 40px; /* afstand fra tekst til knapper */
-    color: rgb(14, 1, 1);
+    
+    
+
 }
 
-.btn {
-    display: inline-block;
-    padding: 10px 25px;
-    margin: 5px;
-    color: rgb(14, 1, 1);
-    border: 2px solid white;
-    background-color: #462829;
-    text-decoration: none;
-    border-radius: 10px;
-    letter-spacing: 1px;
-    transition: 0.3s ease;
-    text-align: left;
-}
 
-.btn:hover {
-    background-color: white;
-    color: #172834;
-    cursor: pointer;
-}
 
 
 
