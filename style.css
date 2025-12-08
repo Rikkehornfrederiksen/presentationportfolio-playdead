@@ -1,6 +1,8 @@
 body {
     background-color: rgba(255, 228, 196, 0);
-   
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    letter-spacing: 2px;
 
 }
 body {
@@ -9,9 +11,7 @@ body {
     width: 100%;
     background-position: center;
     background-repeat: no-repeat;
-    font-family: "Montserrat", sans-serif;
-    font-weight: 700;
-    letter-spacing: 2px;
+    
 }
 .container{
     display: grid;
@@ -55,7 +55,7 @@ body {
 .header-buttons button {
 
     font-size: 2rem;
-    font-style: bold; 
+    font-style: normal; 
     padding: 1em 1em 1em 1em;
     background-color: #000000;
     color: rgb(255, 255, 255);
@@ -77,7 +77,11 @@ body {
 .main {
     grid-area: main;
     padding: 30px;
-
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+   
 }
 .main-flex {
     display:flex;
@@ -86,20 +90,30 @@ body {
     gap: 20px;
 }
 .video-title {
-    text-align: left;
+    text-align: center;
     margin-bottom: 10px;
     font-family:"Montserrat", sans-serif; 
-    font-size: 30px;
+    font-size: 20px;
     color: aliceblue;
     display: flex;
+    margin-right: auto;
 }
 .video-container video {
-    width: 50%;
+    width: 90%;
     height: auto;
     display: flex;
     flex-direction: row;
+    
+   
 }
-
+.video-title2 {
+    display: flex;
+    margin-left: auto;
+}
+.video-container {
+    display: flex;
+    
+}
 
 .image-flex {
     display: flex;
@@ -109,6 +123,7 @@ body {
 .image-flex img {
     width: 300px;
     height: auto;
+    margin-left: auto;
 
 }
 
@@ -126,7 +141,7 @@ body {
     display: flex;
 
     overflow-x: auto;
-    scroll-behavior: x mandatory;
+    scroll-behavior: auto;
     
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
@@ -153,7 +168,7 @@ body {
     background: #462829;
     transform-origin: center center;
     transform: scale(1);
-    transition: transform 0.5;
+    
     position: relative;
 
     display: flex;
@@ -201,6 +216,86 @@ transform: scale(1.0);
     background: #c9d8e2;
 }
 
+h1 {
+    color: #c9d8e2;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: left;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    height: 100%;
+    gap: 40px;
+    max-width: 1000px;
+    background-color: #31010100;
+}
+.contact1 {
+    flex: 1;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: white;
+}
+
+.contact2 {
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+    background-color: rgba(240, 248, 255, 0.021);
+    border-radius: 10px;
+    color: #ffffff;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.contact2 h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.contact2 form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+}
+.contact2 label {
+    font-size: 0.9rem;
+
+}
+.contact2 input,
+.contact2 textarea {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    width: 100%;
+
+}
+.contact2 textarea {
+    height: 120px;
+    resize: vertical;
+
+}
+.contact2 button {
+    padding: 12px;
+    background: black;
+    color: aliceblue;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    letter-spacing: 2px;
+    font-weight: 700px;
+    transition: 0.2s;
+
+}
+
+.contact2 button:hoover {
+    background-color: aqua;
+    
+}
 
 .footer {
     grid-area: footer;
