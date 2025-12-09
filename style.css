@@ -1,3 +1,4 @@
+/*layout*/
 body {
     background-color: rgba(255, 228, 196, 0);
     font-family: "Montserrat", sans-serif;
@@ -24,7 +25,7 @@ body {
     width: 100vw;
     max-width: 1500px; /*viden er 100% men kan ikke overstige 1500px*/
     margin:auto; /*sørger for at alt er centreret uanset brede*/
-    padding: 10px 20px 30px 40px; /*afstanden mellem content og border*/
+    padding: 1px 10px 20px 30px 40px; /*afstanden mellem content og border*/
     gap: 20px; /*viser hvor stor afstand de er imellem rows og columns*/
     background-color: rgba(36, 35, 35, 0);
     height: auto;
@@ -81,6 +82,7 @@ body {
     flex-direction: column;
     align-items:center;
     justify-content: center;
+    max-width: 100%;
    
 }
 .main-flex {
@@ -88,43 +90,58 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
+    
 }
-.video-title {
+.footer {
+    grid-area: footer;
+    display: grid;
+    background-color: #0202024b;
+    color: white;
+    text-align: left;
+    padding: 30px 20px;
+}
+
+.footer-buttons {
+    margin-top: 40px; /* afstand fra tekst til knapper */
+    
+    
+
+}
+
+
+/* front page */
+
+.main-intro-text {
     text-align: center;
-    margin-bottom: 10px;
-    font-family:"Montserrat", sans-serif; 
-    font-size: 20px;
-    color: aliceblue;
-    display: flex;
-    margin-right: auto;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
 }
-.video-container video {
-    width: 90%;
-    height: auto;
-    display: flex;
-    flex-direction: row;
-    
-   
-}
-.video-title2 {
-    display: flex;
-    margin-left: auto;
-}
-.video-container {
-    display: flex;
+.main-intro-text h1 {
+    font-family: "Montserrat", sans-serif;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
     
 }
-
-.image-flex {
-    display: flex;
-    gap: 20px;
-    align-items: center;
+.main-intro-text p {
+    color: #c9d8e2;
+    font-family: "Montserrat", sans-serif;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    font-style: italic;
 }
-.image-flex img {
-    width: 300px;
-    height: auto;
-    margin-left: auto;
 
+.main-button {
+    display: block;
+    background-color: #00000000;
+    margin: 20px auto;
+    text-align: center;
+    color: #ffffff;
+    font-family: "montserrat", sans-serif;
+    font-weight: 700;
+    letter-spacing: 2px;
+    border: 10px;
 }
 
 * {
@@ -136,6 +153,7 @@ body {
     text-align: center;
     overflow: hidden;
     
+    
 }
 .slides {
     display: flex;
@@ -144,24 +162,13 @@ body {
     scroll-behavior: auto;
     
     scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
+    
 }
 
-.slides::-webkit-scrollbar {
-    width: 20px;
-    height: 20px;
-}
-.slides::-webkit-scrollbar-thumb {
-    background-color: black;
-    border-radius: 10px;
-}
-.slides::-webkit-scrollbar-track {
-    background: transparent;
-}
 .slides > div {
     scroll-snap-align: start;
     flex-shrink: 0;
-    width: 500px;
+    width: 600px;
     height: 500px;
     margin-right: 50px;
     border-radius: 10px;
@@ -175,6 +182,7 @@ body {
     justify-content: center;
     align-items: center;
     font-size: 100px;
+    
 }
 
 .slides > div:target {
@@ -182,7 +190,7 @@ transform: scale(1.0);
 }
 
 .author-info {
-    background-color: aliceblue;
+    background-color: rgb(12, 47, 78);
     color: bisque;
     padding: 0.75rem;
     text-align: center;
@@ -193,21 +201,22 @@ transform: scale(1.0);
     margin: 0;
 }
 .author-info a {
-  color: white;
+  color: rgb(53, 18, 18);
 }
 
 
 .slider > a {
   display: inline-flex;
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1rem;
+  height: 1rem;
   background: white;
   text-decoration: none;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  margin: 0 0 0.5rem 0;
+  margin: 0 5px;
   position: relative;
+  border: 1 px solid #255,255,255,0.5;
 }
 .slider >a:active {
     top:1px;
@@ -216,9 +225,75 @@ transform: scale(1.0);
     background: #c9d8e2;
 }
 
+.myproject.html {
+    background-color: #000000;
+}
+
 h1 {
     color: #c9d8e2;
 }
+/*about me*/
+
+/*my projects*/
+
+.image-section {
+    padding: 40px 20px;
+    text-align: center;
+}
+.image-flex {
+    display: flex;
+    justify-content: center;
+}
+
+.main-intro-projects {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+.main-intro-projects h1 {
+    text-align: center;
+
+}
+.video-title {
+    text-align: center;
+    margin-bottom: 10px;
+    font-family:"Montserrat", sans-serif; 
+    font-size: 20px;
+    color: aliceblue;
+    display: flex;
+    margin-right: auto;
+   
+}
+.video-container video {
+    width: 90%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    
+   
+}
+.video-title2 {
+    text-align: center;
+    margin-bottom: 10px;
+    font-family:"Montserrat", sans-serif; 
+    font-size: 20px;
+    color: aliceblue;
+    display: flex;
+    margin-right: auto;
+
+}
+.video-container {
+    display: flex;
+    gap: 10px;
+    flex-wrap: nowrap;
+    justify-content: center;
+    
+}
+.video-title p {
+    color: #ffffff;
+}
+/*contact*/
 
 .flex-container {
     display: flex;
@@ -287,31 +362,16 @@ h1 {
     border-radius: 5px;
     cursor: pointer;
     letter-spacing: 2px;
-    font-weight: 700px;
     transition: 0.2s;
 
 }
 
-.contact2 button:hoover {
+.contact2 button:hover {
     background-color: aqua;
     
 }
 
-.footer {
-    grid-area: footer;
-    display: grid;
-    background-color: #0202024b;
-    color: white;
-    text-align: left;
-    padding: 30px 20px;
-}
 
-.footer-buttons {
-    margin-top: 40px; /* afstand fra tekst til knapper */
-    
-    
-
-}
 
     
 
@@ -388,4 +448,14 @@ h1 {
         
     }
 }
-
+@media (max-width: 900px) {
+    .video-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    .video-container video {
+        width: 100%;
+        max-width: 400px;
+    }
+}
