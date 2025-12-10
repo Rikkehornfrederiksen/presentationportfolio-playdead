@@ -234,65 +234,52 @@ h1 {
 }
 /*about me*/
 
+
 /*my projects*/
-
-.image-section {
+.projects-section {
     padding: 40px 20px;
+    width: 100%;
     text-align: center;
-}
-.image-flex {
-    display: flex;
-    justify-content: center;
-}
-
-.main-intro-projects {
-    text-align: center;
-    max-width: 800px;
     margin: 0 auto;
-    padding: 20px;
 }
-.main-intro-projects h1 {
-    text-align: center;
-
-}
-.video-title {
-    text-align: center;
-    margin-bottom: 10px;
-    font-family:"Montserrat", sans-serif; 
-    font-size: 20px;
-    color: aliceblue;
-    display: flex;
-    margin-right: auto;
-   
-}
-.video-container video {
-    width: 90%;
-    height: auto;
-    display: flex;
-    flex-direction: row;
-    
-   
-}
-.video-title2 {
-    text-align: center;
-    margin-bottom: 10px;
-    font-family:"Montserrat", sans-serif; 
-    font-size: 20px;
-    color: aliceblue;
-    display: flex;
-    margin-right: auto;
-
-}
-.video-container {
-    display: flex;
-    gap: 10px;
-    flex-wrap: nowrap;
+.project-row {
+    display:flex;
+    flex-wrap: wrap;
     justify-content: center;
-    
+    gap: 40px;
+    margin-bottom: 60px;
 }
-.video-title p {
+.project {
+    background: #0000005b;
+    padding: 20px;
+    border-radius: 10px;
+    width: calc(50% - 40px);
+    max-width: 600px;
+    min-width: 280px;
+    color: #ffffff;
+    text-align: center;
+}
+.project h2 {
+    font-family: "Montserrat", sans-serif;
+    line-height: 1.6rem;
+    margin-bottom: 15px;
     color: #ffffff;
 }
+.project p {
+    font-family: "Montserrat", sans-serif;
+    line-height: 1.6rem;
+    margin-top: 10px;
+    color: #ffffff;
+} 
+.project img, 
+.project video {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    margin-top: 10px;
+}
+
+
 /*contact*/
 
 .flex-container {
@@ -449,13 +436,9 @@ h1 {
     }
 }
 @media (max-width: 900px) {
-    .video-container {
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-    }
-    .video-container video {
-        width: 100%;
-        max-width: 400px;
+    .procets {
+        max-width: 100%;
+        max-width: none;
     }
 }
+    
