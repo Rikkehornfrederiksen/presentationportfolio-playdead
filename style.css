@@ -445,6 +445,7 @@ h1 {
         flex-direction: column;
     }
 }
+
 @media (max-width: 900px) {
     .header-buttons {
         flex-direction: column;
