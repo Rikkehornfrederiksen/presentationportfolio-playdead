@@ -207,6 +207,8 @@
   font-weight: 700;
 }
 
+/*main indhold*/
+
 .main {
     grid-area: main;
     padding: 30px;
@@ -224,21 +226,42 @@
     gap: 20px;
     
 }
+/*footer*/
+
 .footer {
-    grid-area: footer;
-    display: grid;
-    background-color: #0202024b;
-    color: white;
-    text-align: left;
-    padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;     /* centrerer horisontalt */
+  justify-content: center; /* centrerer vertikalt */
+  text-align: center;
+  padding: 2rem 1rem;
+  gap: 1rem;
+  width: 100%;
 }
-
 .footer-buttons {
-    margin-top: 40px; /* afstand fra tekst til knapper */
-    
+  display: flex;
+  flex-wrap: wrap;         /* gør den mobil-venlig */
+  justify-content: center; /* centrerer knapper */
+  gap: 1rem;
+  width: 100%;
+}
+
+.footer-buttons button {
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  border: none;
+  background: var(--color-primary);
+  color: #fff;
+  cursor: pointer;
+}
+.footer-buttons button:hover {
+  background: #ddb982;
+  box-shadow: 0 0 12px rgba(221, 185, 130, 0.6);
+  transform: translateY(-2px);
+  font-weight: 700;
+}
     
 
-}
 
 
 /* front page */
@@ -530,43 +553,6 @@ h1 {
     
 
 
-
-/*@media (min-widht:700px) {
-    header{
-        grid-template-columns: auto 6fr 4fr;
-        grid-template-rows: auto;
-        row-gap: 20px;
-        text-align: center;
-        flex-direction: column;
-
-    }
-    .logo {
-        max-width: 150px;
-        flex-direction: row;
-
-    }
-    .header-buttons button {
-        font-size: 0,5rem;
-        padding: 0.5 0.5 0.5 0.5;
-        flex-direction: row;
-    }
-}
-@media (max-widht:700px) {
-    .header{
-        grid-template-rows: auto;
-        grid-template-columns: 1fr;
-        row-gap: 10;
-        flex-direction: row;
-    }
-    .logo {
-        max-width: 100px;
-        flex-direction: row;
-    }
-    .header-buttons button {
-        font-size: 0,3rem;
-        padding:0,1 0,1 0,1 0,1;
-        flex-direction: row;
-    }*/
 
 @media screen and (min-width: 1024px) {
     .header {
