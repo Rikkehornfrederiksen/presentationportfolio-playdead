@@ -1,19 +1,50 @@
 /*layout*/
-body {
-    background-color: rgba(255, 228, 196, 0);
-    font-family: "Montserrat", sans-serif;
-    font-weight: 550;
-    letter-spacing: 2px;
-
-}
-body {
-    background-image: url(images/backgroundtowebsite.jpg);
-    background-size: cover; /*cover gør at mit bagrundsbillede ikke bliver strukket*/
+.hero {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
+    height: 100vh;
+    background-image: url(images/themurderonthelittlemurmaide.jpg);
+    background-size: cover;
+    background-position: top;
+    z-index: -1;
+    will-change: filter;
+    filter: blur(0px);
+    transition: filter 0.3s ease-out;
     
 }
+.hero::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgb(0, 0, 0, 0.2);
+        transition: background 0,5s;
+    }
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    color: #ffffff;
+    text-shadow: 2px 2px 10px rgb(0,0,0,0.5);
+    transition: opacity 0.2 ease-out, transform 0.2;
+    will-change: opacity, transform;
+}
+.content {
+    margin-top: 100vh;
+    min-height: 200vh;
+    background-color: white;
+    position: relative;
+    z-index: 1;
+    
+}
+
 .container{
     display: grid;
     /*grid-template-columns: auto 20fr 20fr; /*første kolone er auto, anden er 6fr og sidste er 4fr*/
@@ -32,45 +63,56 @@ body {
     min-height: 100vh; /*viewport = 1% af skærmens height*/
 }
 .header {
-    grid-area: header;
-    display: grid;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    padding: 10px 20px; /*luft mellem elementer inde i gridden --> 10px er top, 20px right*/
-    background-color:#0202024b;
-    min-height: 100px;
-  
-
+    padding: 20px 40px; /* Mere luft i siderne */
+    z-index: 1000;
+    box-sizing: border-box;
+    background: rgba(255, 255, 255, 0); /* En næsten usynlig glans */
+    
 }
+  
 .logo {
-    max-width: 250px;
+    height: 100px;
+    width: auto;
+    object-fit: contain;
+    image-rendering: -webkit-optimize-contrast;
+    display: block;
+    border-radius: 30%;
     
 
 }
 .header-buttons {
-    justify-self: center; /*placere min navigatio i midten af header-grid*/
     display:flex; /*flexbox*/
-    gap: 10px;
-    flex-direction: row;
+    gap: 50px;
+    align-items: center;
    
 }
 .header-buttons button {
-
-    font-size: 2rem;
-    font-style: normal; 
-    padding: 1em 1em 1em 1em; /*1 em = 16px*/
-    background-color: #000000;
-    color: rgb(255, 255, 255);
-    border: none;
-    border-radius: 10px;
-    cursor: pointer; /*viser mus over knappen*/
-    font-family: "Montserrat", sans-serif;
-    font-weight: 550; /*Husl ny font-weight på 550, istedet for 700*/
-    letter-spacing: 2px;
-   
+    background: transparent; /* Ingen tung sort boks */
+    color: rgb(255, 255, 255); /* Tekstfarven (skift til sort hvis din baggrund er lys) */
+    border: 3px solid rgb(255, 255, 255); /* En tynd, elegant kant */
+    padding: 20px 10px;
+    margin-left: 15px;
+    border-radius: 25px; /* Runde kanter føles venligere og moderne */
+    cursor: pointer;
+    font-family: 'Segoe UI', sans-serif; /* Eller din egen font */
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 14px;
+    transition: all 0.3s ease; /* Gør farveskiftet blødt */
 }
+    
+   
+
 
 .header-buttons button:hover {/*anden end hover?*/
-    background-color: #310101;
+    background-color: #000000;
     color: rgb(255, 255, 255);
 
 } 
@@ -436,30 +478,22 @@ h1 {
         flex-direction: row;
     }*/
 
-@media (max-width:700px) {
+@media screen and (min-width: 1024px) {
     .header {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto auto;
-        row-gap: 15px;
-        text-align: center;
-        flex-direction: column;
+        display: flex !important;
+        justify-content: space-between !important;
+        width: 100vw !important; /* Tvinger den til at bruge skærmbredden */
+        left: 0;
+        right: 0;
+    }
+
+    .header-buttons {
+        display: flex !important;
+        flex-direction: row !important;
+        margin-right: 50px; /* Giver den lidt afstand fra selve kanten */
     }
 }
 
-@media (max-width: 900px) {
-    .header-buttons {
-        flex-direction: column;
-        width: auto;
-        text-align: center;
-    }
-}
-@media (max-width:1024px) {
-    .header{
-        grid-template-columns: 1fr;
-        grid-template-rows: auto auto;
-        row-gap: 20px;
-        flex-direction: column;
-    }
     .logo {
         max-width: 150px;
         flex-direction: row;
@@ -470,7 +504,7 @@ h1 {
         flex-direction: row;
         
     }
-}
+
 @media (max-width: 900px) {
     .procets {
         max-width: 100%;
