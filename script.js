@@ -40,3 +40,22 @@ window.addEventListener('scroll', function() {
         heroText.style.transform = `translateY(-${scrollPosition * 0.2}px)`;
     }
 });
+
+const burger = document.getElementById('burger');
+const dropdown = document.getElementById('dropdown');
+
+// Åbn/luk burger
+burger.addEventListener('click', (event) => {
+  event.stopPropagation(); // klik på burger må IKKE lukke menuen
+  burger.classList.toggle('open');
+  dropdown.classList.toggle('open');
+});
+
+// Klik på baggrunden lukker menuen
+dropdown.addEventListener('click', (event) => {
+  // Hvis man klikker på baggrunden (ikke links)
+  if (event.target === dropdown) {
+    burger.classList.remove('open');
+    dropdown.classList.remove('open');
+  }
+});
