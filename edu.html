@@ -1,168 +1,360 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-widht, initial-scale=1.0">
-        <title>My portfolio</title>
-        <link rel="stylesheet" href="style.css">
-        <script src="script.js" defer ></script>
-    </head>
-        
-        <body>
-            <div id="hero-background" class="hero"></div>
 
-            <div class="container">
-                    <header class="header">
-                        <a href="index.html">
-                            <img src="images/Skærmbillede 2026-02-28 141012.jpg" alt="logo" class="logo">
-                        </a>
-                     
-                        
-                         <nav class="menu-wrapper">
-                            <div class="burger" id="burger">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <div id="hero-background" class="hero"></div>
+
+    <div class="container">
+        <header class="header">
+            <a href="index.html">
+                <img src="images/nyt_logo_charlie_horn.png" alt="logo" class="logo">
+            </a>
+            <h1 class="page-title">MULTIMEDIE PROJEKTER</h1>
+
+            <nav class="menu-wrapper">
+                <div class="burger" id="burger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <div class="dropdown" id="dropdown">
+                    <a href="work.html">OM MIG</a>
+                    <a href="edu.html">MULTIMEDIE PROJEKTER</a>
+                    <a href="drawings.html">SKITSER, TEGNINGER OG MALERIER</a>
+                    <a href="contact.html">KONTAKT MIG</a>
+                </div>
+            </nav>
+        </header>
+        <main>
+            <section class="gallery-section">
+
+
+
+                <div class="gallery-grid">
+
+                    <!-- PROJEKT 1: MOVING ART (VIDEO) -->
+                    <div class="gallery-item" data-type="video" data-media="videos/movingartproject.mp4">
+                        <div class="card-inner">
+                            <img src="images/movingartproject.jpg" alt="Times go bye" loading="lazy">
+                            <div class="card-overlay">
+                                <h3>Times go bye</h3>
+                                <span>Photoshop & After Effects</span>
                             </div>
-
-                        <div class="dropdown" id="dropdown">
-                            <a href="work.html">WORK</a>
-                            <a href="edu.html">EDUCATION PROJECTS</a>
-                            <a href="drawings.html">DRAWINGS</a>
-                            <a href="contact.html">CONTACT</a>
                         </div>
-                        </nav>
-                    </header>
-            
-                    
-                    
+                        <!-- Knappen skal ligge HERINDE i gallery-item -->
+                        <div class="card-info">
+                            <button class="info-btn" type="button">Læs om projektet</button>
                         </div>
-               
-                    </header>
+                    </div>
 
-                    <main class="grid">
-                        <div class="Main-intro-projects"></div>
-                       
+                    <!-- PROJEKT 2: Merchandise med Lightroom -->
+                    <div class="gallery-item" data-type="image" data-media="images/projekt2_stort.jpg">
+                        <div class="card-inner">
+                            <img src="images/imageformerchendicerender.jpg" alt="Merchandise med Lightroom"
+                                loading="lazy">
+                            <div class="card-overlay">
+                                <h3>Merchandise med Lightroom</h3>
+                                <span>Lightroom & Render</span>
+                            </div>
+                        </div>
+                        <div class="card-info">
+                            <button class="info-btn" type="button">Læs om projektet</button>
+                        </div>
+                    </div>
 
-
-                        <section class="projects-section">
-
-
-                                <div class="project-row">
-
-                                    <div class="project">
-                                        <h2 class="video-title">My ability to design moving-art with motion graphic</h2>
-                                        <video controls>
-                                            <source src="images/Movingartprojectwothalienscompressed.mp4" type="video/mp4">
-                                        </video>
-                                        <p> 
-                                            Throughout my education have I gained experience with a wide range of Adobe platforms, which allows a strengthening of my skills as a multimedia-designer. <br>
-                                            This is shown in this short video which was created using Adobe Photoshop and After Effects. <br>
-                                            This video is to demonstrate fundamental animation techniques applied to a classic painting. <br>
-                                            These visual skills can be applied to produce motion graphics that emphasizes attention to detail, contrast and atmospheric storytelling. <br>
-                                            Key aspects of a professional visual branding and interactiv media design for future video game projects.
-                                        </p>
-                                    </div>
-                                    
-                                    <div class="project">
-                                        <h2 class="video-title2">My skills for animation 2D with use of Premiere Pro</h2>
-                                        <video controls>
-                                            <source src="images/bellvideostoppestedet.mp4" type="video/mp4">
-                                        </video>
-                                        <p> 
-                                            This short animation of a bell thats been made in Adobe Photoshop, After Effect and Premiere Pro shows the Tone Of Voice at Playdead studio. Even though this video is quite short, it contains many hours of editing in postproduction both in After Effect and Adobe Premiere Pro. <br>
-                                            With focus on minimalism, an erie atmosphere and the audio, it contains Playdead´s values of making visual universes with dark undertones and many emplicit details which is reflected in my bell animation. <br>
-
-                                        </p>
-                                        </div>
-                                </div>   
-                           
-                                
-                                <div class="project-row">
-
-                                    
-                                    <div class="project">
-                                            <h2 class="image-titel1">Branding and merchendise with use of postproductive platform Lightroom Classic</h2>
-                                        <img src="images/imageformerchendicerender.jpg" alt="This picture is a photography of a little statue of the Disney character Stitch. The photograpgy shows a smiling stitch with 
-                                        a banjo in his hands while his eye a closed above his smile that shows all his teeth. 
-                                        His fur has the classic blue texture and long ears. The photography is showned to give an insight to how to post-edit a photography to match the style of the specific company. 
-                                        The company is Playdead Studio, where the companies videogames has a strong Tone og voice with natural and cold colors. The stitch photography s heavly edited to have the same 
-                                        tone of voice, to give a more bland expression.  ">
-                                        <p>Merchendise within the video game industry plays a segnificant key role in engaging with fans and enhancing the use/playse experience. <br>
-                                            My skills extends to conceptually designing, staging and photographing merchandise to align with the aestetic and tone of the videgames from Playdead. <br>
-                                            This specific image demonstrates my ability to produce visually and compelling merchandise using composition, lighting and shadow techniques to highlight the product. <br>
-                                            With the use of Adobe Lightroom Classic can I  create polished and professional photos that cater to a specific target audiende, ensuring the merchandise not only completes the games branding, <br>
-                                            but also strengthen the overall experience.  
-                                        </p>
-                            
-                                    </div>
-
-                                    <div class="project">
-                                            <h2 class="image-titel2">Narrative storytelling with use of Figma</h2>
-                                            <img src="images/storyboard.jpg" alt="storyboard">
-                                            <p>The fundamental beginning of creating immersive storytelling, whether it's a basic video, game design, campaigns, cutscenes, visual contepts, TOV building, and so on
-                                                it's vital to structur an overall vision for future productions. <br>
-                                                This image shows a way to create an immersive storyboard even as simple as it its structur may be, it plays a fundamental role in design. <br>
-                                                I can produce storyboard that, through movement, color and style, effectivly showcases a deep and immersive narrative layout.
-                                            </p>
-                                    </div>
-                                    
-                                    <div class="project">
-                                        <h2 class="image-titel3">My multible skills inside visual branding</h2>
-                                        <img src="images/moodboard.jpg" alt="Moodboard">
-                                        <p> Through my experience developing various UI and UX designs, I have become highly familiar with shaping overall atmosphere, Tone Of Voice and visual layouts in multimedia projects. <br>
-                                            This image is one of many examples, showcasing my previous work in interactive media and visual storytelling. <br>
-                                            A moodboard plays a central role in the development process, helping to research and define visual aestetics, narrative tone and structual hierarchy. <Br>
-                                            With my skillset, I can independantly and confidently produce a moodboard in alignment with a project's crative vision, support immersive branding, and communicate compelling visual narratives suitable for game design. 
-                                        </p>
-
-                                    </div>
-
-                                    <div class="project">
-                                        <h2 class="image-titel4">Photoshop with layers</h2>
-                                        <img src="images/projekt1.jpg" alt="Photoshop with layers">
-                                        <p>One of my strong suits is my work ethics and my curiousity in regards to creating new and deeper images. <br>
-                                            This image is created in Adobe Photoshpe by various layers from the bagground to highlights on the monsters body and face. <br>
-                                            With my endless creativity, I can work in Adobe Photoshop with multible layers to create univeres that fits a specific theme, tone or atmosphere. <br>
-                                            This set of skills can be used in verious forms in the creative part of a production whether it will be posters, frontpages, brainstorms and so on. 
-                                        </p>
-
-                                    </div>
-                                </div>    
-                                    
-                            
-                                <div class="floating-box-wrapper">
-                                    <div class="floating-box"></div>
-                                    
-                                </div>
-                            
-
-                                
-                        </section>
-                       
-                    </main>
-
-                    <footer class="footer"> 
-                        <p>&copy; 2025 Rikke Horn Frederiksen - all rights reserved</p>
-                        
-                        <p class="note"> contact me by email: happyoflife2@gmail.com</p>
-                        
-                        
-                      <div class="footer-buttons"> 
-                        <button onclick="location.href='index.html'">FRONT PAGE</button>
-                        <button onclick="location.href='work.html'">WORK</button>
-                        <button onclick="location.href='myprojects.html'">MY PROJECTS</button>
-                        <button onclick="location.href='contact.html'">CONTACT ME</button>
-                      </div>
+                    <!-- PROJEKT 3: Narrative storytelling med Figma -->
+                    <div class="gallery-item" data-type="image" data-media="images/projekt3_stort.jpg">
+                        <div class="card-inner">
+                            <img src="images/storyboard.jpg" alt="Narrative storytelling med Figma" loading="lazy">
+                            <div class="card-overlay">
+                                <h3>Narrative storytelling</h3>
+                                <span>Figma</span>
+                            </div>
+                        </div>
+                        <div class="card-info">
+                            <button class="info-btn" type="button">Læs om projektet</button>
+                        </div>
+                    </div>
 
 
-                    </footer>
-            </div >   
 
-        </body>
+                    <!-- PROJEKT 4: Affininty diagram -->
+                    <div class="gallery-item" data-type="image" data-media="images/projekt3_stort.jpg">
+                        <div class="card-inner">
+                            <img src="images/Affinity_diagram.png" alt="Projekt 4" loading="lazy">
+                            <div class="card-overlay">
+                                <h3>Affinity Diagram</h3>
+                                <span>Preproducktion & Data-analyse</span>
+                            </div>
+                        </div>
+                        <div class="card-info">
+                            <button class="info-btn" type="button">Læs om projektet</button>
+                        </div>
+                    </div>
+
+                    <!-- PROJEKT 5: UI-Inventory -->
+                    <div class="gallery-item" data-type="image" data-media="images/projekt3_stort.jpg">
+                        <div class="card-inner">
+                            <img src="images/UI_inventory.png" alt="Projekt 4" loading="lazy">
+                            <div class="card-overlay">
+                                <h3>UI-Inventory</h3>
+                                <span>Værktøj & UI komponenter</span>
+                            </div>
+                        </div>
+                        <div class="card-info">
+                            <button class="info-btn" type="button">Læs om projektet</button>
+                        </div>
+                    </div>
+
+                    <!-- PROJEKT 6: Risikoanalyse -->
+                    <div class="gallery-item" data-type="image" data-media="images/projekt3_stort.jpg">
+                        <div class="card-inner">
+                            <img src="images/risiko_analyse.png" alt="Projekt 4" loading="lazy">
+                            <div class="card-overlay">
+                                <h3>Risikoanalyse</h3>
+                                <span>Værktøj til samarbejde</span>
+                            </div>
+                        </div>
+                        <div class="card-info">
+                            <button class="info-btn" type="button">Læs om projektet</button>
+                        </div>
+                    </div>
+
+                    <!-- PROJEKT 7: Fysisk Produktudvikling & løsning -->
+                    <div class="gallery-item" data-type="image" data-media="images/projekt3_stort.jpg">
+                        <div class="card-inner">
+                            <img src="images/fysisk_udvikling.jpg" alt="Projekt 4" loading="lazy">
+                            <div class="card-overlay">
+                                <h3>Fysisk Produktudvikling & løsning</h3>
+                                <span>Teknik / Værktøj</span>
+                            </div>
+                        </div>
+                        <div class="card-info">
+                            <button class="info-btn" type="button">Læs om projektet</button>
+                        </div>
+                    </div>
+
+                    <!-- PROJEKT 8: Plakat med Illustrator -->
+                    <div class="gallery-item" data-type="image" data-media="images/projekt3_stort.jpg">
+                        <div class="card-inner">
+                            <img src="images/Plakat_illustrator.png" alt="Projekt 4" loading="lazy">
+                            <div class="card-overlay">
+                                <h3>Plakat med Illustrator</h3>
+                                <span>Teknik & Værktøj</span>
+                            </div>
+                        </div>
+                        <div class="card-info">
+                            <button class="info-btn" type="button">Læs om projektet</button>
+                        </div>
+                    </div>
+
+                    <!-- PROJEKT 9: Baggrund med Photoshop -->
+                    <div class="gallery-item" data-type="image" data-media="images/projekt3_stort.jpg">
+                        <div class="card-inner">
+                            <img src="images/Bagrund_photoshop.png" alt="Projekt 4" loading="lazy">
+                            <div class="card-overlay">
+                                <h3>Baggrund med Photoshop</h3>
+                                <span>Teknik & kreativitet</span>
+                            </div>
+                        </div>
+                        <div class="card-info">
+                            <button class="info-btn" type="button">Læs om projektet</button>
+                        </div>
+                    </div>
+
+                    <!-- PROJEKT 10: Lightroom & photoshop -->
+                    <div class="gallery-item" data-type="image" data-media="images/projekt3_stort.jpg">
+                        <div class="card-inner">
+                            <img src="images/pictureofme3.jpg" alt="Projekt 4" loading="lazy">
+                            <div class="card-overlay">
+                                <h3>Lightroom & Photoshop</h3>
+                                <span>Teknik & personlig fremstilling</span>
+                            </div>
+                        </div>
+                        <div class="card-info">
+                            <button class="info-btn" type="button">Læs om projektet</button>
+                        </div>
+                    </div>
+                    <!-- PROJEKT 10: ALMINDELIGT BILLEDE -->
+                    <div class="gallery-item" data-type="image" data-media="images/projekt3_stort.jpg">
+                        <div class="card-inner">
+                            <img src="images/projekt3_thumb.jpg" alt="Projekt 4" loading="lazy">
+                            <div class="card-overlay">
+                                <h3>Projekt Titel</h3>
+                                <span>Teknik / Værktøj</span>
+                            </div>
+                        </div>
+                        <div class="card-info">
+                            <button class="info-btn" type="button">Læs om projektet</button>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+                </div> <!-- /gallery-grid -->
+            </section>
+        </main>
+
+        <!-- POP-UP BOKS TIL BÅDE BILLEDER OG VIDEO -->
+        <div class="media-modal" id="mediaModal">
+            <div class="media-modal-content">
+                <span class="close-modal" id="closeModal">&times;</span>
+                <div id="mediaContainer"></div>
+            </div>
+        </div>
+
+        <div class="Main-intro-projects"></div>
+
+
+        <section class="projects-section">
+            <div class="project-row">
+                <div class="project">
+                    <h2 class="video-title">My ability to design moving-art with motion graphic</h2>
+                    <video controls>
+                        <source src="images/Movingartprojectwothalienscompressed.mp4" type="video/mp4">
+                    </video>
+                    <p>
+                        Throughout my education have I gained experience with a wide range of Adobe platforms, which
+                        allows a strengthening of my skills as a multimedia-designer. <br>
+                        This is shown in this short video which was created using Adobe Photoshop and After Effects.
+                        <br>
+                        This video is to demonstrate fundamental animation techniques applied to a classic painting.
+                        <br>
+                        These visual skills can be applied to produce motion graphics that emphasizes attention to
+                        detail, contrast and atmospheric storytelling. <br>
+                        Key aspects of a professional visual branding and interactiv media design for future video
+                        game projects.
+                    </p>
+                </div>
+
+                <div class="project">
+                    <h2 class="video-title2">My skills for animation 2D with use of Premiere Pro</h2>
+                    <video controls>
+                        <source src="images/bellvideostoppestedet.mp4" type="video/mp4">
+                    </video>
+                    <p>
+                        This short animation of a bell thats been made in Adobe Photoshop, After Effect and Premiere
+                        Pro shows the Tone Of Voice at Playdead studio. Even though this video is quite short, it
+                        contains many hours of editing in postproduction both in After Effect and Adobe Premiere
+                        Pro. <br>
+                        With focus on minimalism, an erie atmosphere and the audio, it contains Playdead´s values of
+                        making visual universes with dark undertones and many emplicit details which is reflected in
+                        my bell animation.
+                    </p>
+                </div>
+            </div>
+
+            <div class="project-row">
+                <div class="project">
+                    <h2 class="image-titel1">Branding and merchendise with use of postproductive platform Lightroom
+                        Classic</h2>
+                    <img src="images/imageformerchendicerender.jpg"
+                        alt="This picture is a photography of a little statue of the Disney character Stitch.">
+                    <p>
+                        Merchendise within the video game industry plays a segnificant key role in engaging with
+                        fans and enhancing the use/playse experience. <br>
+                        My skills extends to conceptually designing, staging and photographing merchandise to align
+                        with the aestetic and tone of the videgames from Playdead. <br>
+                        This specific image demonstrates my ability to produce visually and compelling merchandise
+                        using composition, lighting and shadow techniques to highlight the product. <br>
+                        With the use of Adobe Lightroom Classic can I create polished and professional photos that
+                        cater to a specific target audiende, ensuring the merchandise not only completes the games
+                        branding, <br>
+                        but also strengthen the overall experience.
+                    </p>
+                </div>
+
+                <div class="project">
+                    <h2 class="image-titel2">Narrative storytelling with use of Figma</h2>
+                    <img src="images/storyboard.jpg" alt="storyboard">
+                    <p>
+                        The fundamental beginning of creating immersive storytelling, whether it's a basic video,
+                        game design, campaigns, cutscenes, visual contepts, TOV building, and so on
+                        it's vital to structur an overall vision for future productions. <br>
+                        This image shows a way to create an immersive storyboard even as simple as it its structur
+                        may be, it plays a fundamental role in design. <br>
+                        I can produce storyboard that, through movement, color and style, effectivly showcases a
+                        deep and immersive narrative layout.
+                    </p>
+                </div>
+
+                <div class="project">
+                    <h2 class="image-titel3">My multible skills inside visual branding</h2>
+                    <img src="images/moodboard.jpg" alt="Moodboard">
+                    <p>
+                        Through my experience developing various UI and UX designs, I have become highly familiar
+                        with shaping overall atmosphere, Tone Of Voice and visual layouts in multimedia projects.
+                        <br>
+                        This image is one of many examples, showcasing my previous work in interactive media and
+                        visual storytelling. <br>
+                        A moodboard plays a central role in the development process, helping to research and define
+                        visual aestetics, narrative tone and structual hierarchy. <br>
+                        With my skillset, I can independantly and confidently produce a moodboard in alignment with
+                        a project's crative vision, support immersive branding, and communicate compelling visual
+                        narratives suitable for game design.
+                    </p>
+                </div>
+
+                <div class="project">
+                    <h2 class="image-titel4">Photoshop with layers</h2>
+                    <img src="images/projekt1.jpg" alt="Photoshop with layers">
+                    <p>
+                        One of my strong suits is my work ethics and my curiousity in regards to creating new and
+                        deeper images. <br>
+                        This image is created in Adobe Photoshpe by various layers from the bagground to highlights
+                        on the monsters body and face. <br>
+                        With my endless creativity, I can work in Adobe Photoshop with multible layers to create
+                        univeres that fits a specific theme, tone or atmosphere. <br>
+                        This set of skills can be used in verious forms in the creative part of a production whether
+                        it will be posters, frontpages, brainstorms and so on.
+                    </p>
+                </div>
+            </div>
+
+            <div class="floating-box-wrapper">
+                <div class="floating-box"></div>
+            </div>
+        </section>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2026 Rikke Horn Frederiksen - all rights reserved</p>
+            <p class="note">Contact me by email: rikkehornflorentz@gmail.com</p>
+
+            <div class="footer-buttons">
+                <button onclick="location.href='index.html'">FORSIDE</button>
+                <button onclick="location.href='work.html'">OM MIG</button>
+                <button onclick="location.href='edu.html'">MULTIMEDIE PROJEKTER</button>
+                <button onclick="location.href='drawings.html'">SKITSER, TEGNINGER OG MALERIER</button>
+                <button onclick="location.href='contact.html'">KONTAKT MIG</button>
+            </div>
+        </footer>
+    </div>
+    <div class="video-modal" id="videoModal">
+        <div class="video-modal-content">
+            <span class="close-video" id="closeVideo">&times;</span>
+            <div class="video-wrapper">
+                <video id="modalVideo" controls>
+                    <source src="" type="video/mp4">
+                    Din browser understøtter ikke video-afspilning.
+                </video>
+            </div>
+        </div>
+    </div>
+
+</body>
+
 </html>
-
-
-
-
-

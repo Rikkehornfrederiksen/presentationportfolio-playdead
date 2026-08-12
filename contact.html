@@ -1,87 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-widht, initial-scale=1.0">
-        <title>My portfolio</title>
-        <link rel="stylesheet" href="style.css">
-        <script src="script.js" defer ></script>
-    </head>
-        
-        <body>
-            <div id="hero-background" class="hero"></div>
 
-            <div class="container">
-                    <header class="header">
-                        <a href="index.html">
-                            <img src="images/Skærmbillede 2026-02-28 141012.jpg" alt="logo" class="logo">
-                        </a>
-                        
-                          <nav class="menu-wrapper">
-                            <div class="burger" id="burger">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                            </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
 
-                        <div class="dropdown" id="dropdown">
-                            <a href="work.html">WORK</a>
-                            <a href="edu.html">EDUCATION PROJECTS</a>
-                            <a href="drawings.html">DRAWINGS</a>
-                            <a href="contact.html">CONTACT</a>
-                        </div>
-                        </nav>
-                    </header>
-            
-                        <div class="hero-content"> 
-                            <h1>Rikke Horn Frederiksen</h1> 
-                            <p>Visual Storyteller & Multimedia Designer</p>
-                        </div>
+<body>
+    <div id="hero-background" class="hero"></div>
 
-               
-                    </header>
+    <div class="container">
+        <header class="header">
+            <a href="index.html">
+                <img src="images/nyt_logo_charlie_horn.png" alt="logo" class="logo">
+            </a>
 
-                    <h1>Contact</h1>
-                    <main class="flex-container">
-                       
-                        <div class="contact2">
-                                <h2>Or you are welcom to fill out this contact form and I will respond as soon as possible</h2>
-                            <form action="https://charliehorn.dk/sendmail.php" method="post" enctype="text/plain">
-                                <label for="name">Name</label>
-                                <input type="text" id="name" name="name" placeholder="Your name" required>
-                                
-                                <label for="email">Email</label>
-                                <input type="email" id="email" name="email" placeholder="Your email" required>
+            <h1 class="page-title">KONTAKT</h1>
 
-                                <label for="message" >message</label>
-                                <textarea id="message" name="message" placeholder="Your message" required></textarea>
+            <nav class="menu-wrapper">
+                <div class="burger" id="burger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
 
-                                <button type="submit">Send</button>
-                            </form>
-                        </div>
-                         <div class="contact1">
-                                <h2>You are welcome to contact me by:</h2>
-                                <p>My phonenumber: 45+ 61706679</p>
-                                <p>Email: happyoflife2@gmail.com</p>
-                                <p>Instagram: charliehorn97 </p>
-                        </div>
-                    </main>
+                <div class="dropdown" id="dropdown">
+                    <a href="work.html">OM MIG</a>
+                    <a href="edu.html">MULTIMEDIE PROJEKTER</a>
+                    <a href="drawings.html">SKITSER, TEGNINGER OG MALERIER</a>
+                    <a href="contact.html">KONTAKT MIG</a>
+                </div>
+            </nav>
+        </header>
 
-                    <footer class="footer"> 
-                        <p>&copy; 2025 Rikke Horn Frederiksen - all rights reserved</p>
-                        
-                        <p class="note"> contact me by email: happyoflife2@gmail.com</p>
-                        
-                       
+        <main>
+            <div class="contact2">
+                <h2>Kontakt Mig</h2>
 
-                      <div class="footer-buttons">  
-                        <button onclick="location.href='index.html'">FRONT PAGE</button>
-                        <button onclick="location.href='work.html'">WORK</button>
-                        <button onclick="location.href='myprojects.html'">MY PROJECTS</button>
-                        <button onclick="location.href='contact.html='">CONTACT ME</button>
-                      </div>
-                    </footer>
-            </div >   
+                
+                <form action="https://formspree.io/f/xeajggak" method="POST">
 
-        </body>
+                    <label for="name">Navn</label>
+                    <input type="text" id="name" name="name" placeholder="Dit navn" required>
+
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" placeholder="din@email.dk" required>
+
+                    <label for="message">Besked</label>
+                    <textarea id="message" name="message" placeholder="Skriv din besked her..." required></textarea>
+
+                    <button type="submit">SEND BESKED</button>
+                </form>
+            </div>
+        </main>
+
+
+
+        <footer class="footer">
+            <p>&copy; 2026 Rikke Horn Frederiksen - all rights reserved</p>
+
+            <p class="note"> Contact me by email: rikkehornflorentz@gmail.com</p>
+
+
+
+            <div class="footer-buttons">
+                <button onclick="location.href='index.html'">FORSIDE</button>
+                <button onclick="location.href='work.html'">OM MIG</button>
+                <button onclick="location.href='edu.html'">MULTIMEDIE PROJEKTER</button>
+                <button onclick="location.href='drawings.html'">SKITSER, TEGNINGER OG MALERIER</button>
+                <button onclick="location.href='contact.html'">KONTAKT MIG</button>
+            </div>
+        </footer>
+    </div>
+
+</body>
+
 </html>

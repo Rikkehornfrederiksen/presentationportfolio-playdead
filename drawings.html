@@ -1,73 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>My portfolio</title>
-        <link rel="stylesheet" href="style.css">
-        <script src="script.js" defer ></script>
-        
-    </head>
-        
-        <body>
-            <div id="hero-background" class="hero"></div>
 
-                           
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 
-                <div class="container">
-                    <header class="header">
-                        <a href="index.html">
-                            <img src="images/Skærmbillede 2026-02-28 141012.jpg" alt="logo" class="logo">
-                        </a>
+</head>
 
-                         <nav class="menu-wrapper">
-                            <div class="burger" id="burger">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
+<body>
+    <div id="hero-background" class="hero"></div>
+
+
+
+    <div class="container">
+        <header class="header">
+            <a href="index.html">
+                <img src="images/nyt_logo_charlie_horn.png" alt="logo" class="logo">
+            </a>
+
+            <h1 class="page-title">SKITSER, TEGNINER OG MALERIER</h1>
+
+            <nav class="menu-wrapper">
+                <div class="burger" id="burger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <div class="dropdown" id="dropdown">
+                    <a href="work.html">OM MIG</a>
+                    <a href="edu.html">MULTIMEDIE PROJEKTER</a>
+                    <a href="drawings.html">SKITSER, TEGNINGER OG MALERIER</a>
+                    <a href="contact.html">KONTAKT MIG</a>
+                </div>
+            </nav>
+        </header>
+
+
+
+        <main>
+            <section class="slider-section">
+                <div class="slider-container">
+                    <!-- Navigation pile -->
+                    <button class="prev-btn" id="prevBtn" aria-label="Forrige billede">&#10094;</button>
+                    <button class="next-btn" id="nextBtn" aria-label="Næste billede">&#10095;</button>
+
+                    <!-- Slides Wrapper -->
+                    <div class="slides-wrapper" id="slidesWrapper">
+                        <!-- Slide 1 -->
+                        <div class="slide active" data-title="Mørk Skovskitse" data-year="2025"
+                            data-tech="Blyant & Kul på papir"
+                            data-desc="En undersøgelse af skygger og dybde i nordiske skovområder. Særligt fokus på kontraster.">
+                            <img src="images/skitse1.jpg" alt="Mørk Skovskitse">
+                            <div class="slide-caption">
+                                <h3>Mørk Skovskitse</h3>
+                                <p>Tryk for specifikationer</p>
                             </div>
-
-                        <div class="dropdown" id="dropdown">
-                            <a href="work.html">WORK</a>
-                            <a href="edu.html">EDUCATION PROJECTS</a>
-                            <a href="drawings.html">DRAWINGS</a>
-                            <a href="contact.html">CONTACT</a>
                         </div>
-                        </nav>
-                    </header>
-            
-                      
 
-                        <main>
-                            
-                            
+                        <!-- Slide 2 -->
+                        <div class="slide" data-title="Abstrakt Portræt" data-year="2024"
+                            data-tech="Akryl på lærred (80x100 cm)"
+                            data-desc="Eksperimenterende farvelag og ekspressive penselstrøg skabt over en periode på tre uger.">
+                            <img src="images/skitse2.jpg" alt="Abstrakt Portræt">
+                            <div class="slide-caption">
+                                <h3>Abstrakt Portræt</h3>
+                                <p>Tryk for specifikationer</p>
+                            </div>
+                        </div>
+
+                        <!-- Slide 3 -->
+                        <div class="slide" data-title="Menneskets Anatomi" data-year="2025"
+                            data-tech="Tusch og Vandfarve"
+                            data-desc="Hurtige croquis-skitser med fokus på bevægelse, form og kropssprog.">
+                            <img src="images/skitse3.jpg" alt="Menneskets Anatomi">
+                            <div class="slide-caption">
+                                <h3>Menneskets Anatomi</h3>
+                                <p>Tryk for specifikationer</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Indikator prikker -->
+                    <div class="dots-container" id="dotsContainer"></div>
+                </div>
+            </section>
+
+            <!-- POP-UP MODAL TIL SPECIFIKATIONER -->
+            <div class="modal" id="artModal">
+                <div class="modal-content">
+                    <span class="close-modal" id="closeModal">&times;</span>
+                    <h2 id="modalTitle">Titel</h2>
+                    <p><strong>Årstal:</strong> <span id="modalYear"></span></p>
+                    <p><strong>Teknik:</strong> <span id="modalTech"></span></p>
+                    <hr>
+                    <p id="modalDesc"></p>
+                </div>
+            </div>
 
 
-                        </main>
 
-                        <footer class="footer"> 
-                        <p>&copy; 2025 Rikke Horn Frederiksen - all rights reserved</p>
-                        
-                        <p class="note"> contact me by email: happyoflife2@gmail.com</p>
-                        
-                        
+        </main>
 
-                      <div class="footer-buttons"> 
-                        <button onclick="location.href='index.html'">FRONT PAGE</button>
-                        <button onclick="location.href='aboutme.html'">ABOUT ME</button>
-                        <button onclick="location.href='myprojects.html'">MY PROJECTS</button>
-                        <button onclick="location.href='contact.html'">CONTACT ME</button>
-                      </div>
+        <footer class="footer">
+            <p>&copy; 2026 Rikke Horn Frederiksen - all rights reserved</p>
 
-                     </footer>
-            </div >   
+            <p class="note"> Contact me by email: rikkehornflorentz@gmail.com</p>
 
-            
-            
-        </body>
+
+
+            <div class="footer-buttons">
+                <button onclick="location.href='index.html'">FORSIDE</button>
+                <button onclick="location.href='work.html'">OM MIG</button>
+                <button onclick="location.href='edu.html'">MULTIMEDIE PROJEKTER</button>
+                <button onclick="location.href='drawings.html'">SKITSER, TEGNINGER OG MALERIER</button>
+                <button onclick="location.href='contact.html'">KONTAKT MIG</button>
+            </div>
+
+        </footer>
+    </div>
+
+
+
+</body>
+
 </html>
-
-
-
-
-

@@ -1,11 +1,11 @@
+/* ROOT VARIABLES */
 :root {
-  /* Colors */
   --color-white: #ffffff;
-  --color-black: #000000;
+  --color-black: #ffffff; /* Rettet til lys farve så burger-streger ses tydeligt */
   --color-dark: #020202;
   --color-overlay: rgba(0, 0, 0, 0.2);
 
-  --color-primary: #717d85a1;
+  --color-primary: #ddb982c7;
   --color-secondary: #000000d7;
   --color-accent: #c9d8e2;
   --color-accent-2: #462829;
@@ -22,59 +22,41 @@
   /* Backgrounds */
   --bg-main: #ffffff;
   --bg-dark: #000000;
-  --bg-transparent-dark: rgba(0, 0, 0, 0.36);
+  --bg-transparent: rgba(18, 18, 18, 0.95); /* Mørk læsbar baggrund til burgermenuen */
 
-  /* Spacing */
-  --space-xs: 0.4rem;
-  --space-sm: 0.6rem;
-  --space-md: 1rem;
-  --space-lg: 2rem;
-  --space-xl: 3rem;
-
-  /* Radius */
-  --radius-sm: 5px;
-  --radius-md: 10px;
-  --radius-lg: 25px;
-  --radius-xl: 30px;
-
-  /* Shadows */
-  --shadow-sm: 0 2px 10px rgba(0,0,0,0.2);
-  --shadow-md: 0 30px 60px rgba(0,0,0,0.25);
-
-  /* Fonts */
-  --font-main: "Montserrat", sans-serif;
-  --font-alt: "Segoe UI", sans-serif;
-
-  /* Transitions */
-  --transition-fast: 0.2s ease;
+  /* Spacing & Fonts */
+  :root {
+  /* Font til overskrifter, logo og titler */
+  --font-heading: 'Orbitron', sans-serif;
+  
+  /* Font til brødtekst, brødtekstafsnit (p), links og knapper */
+  --font-main: 'Rajdhani', sans-serif;
+}
   --transition-normal: 0.3s ease-in-out;
-
-  /* Breakpoints */
-  --bp-sm: 480px;
-  --bp-md: 768px;
-  --bp-lg: 1024px;
-
-  /* Z-index */
-  --z-header: 1000;
-  --z-overlay: 900;
-  --z-base: 1;
 }
 
-/*layout*/
-.hero {
+* { 
+  box-sizing: border-box; 
+}
 
+html, body {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+/* Base Layout */
+.hero {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
+  overflow: hidden;
   background-image: url(images/ny_bagrundd.png);
   background-size: cover;
-  background-position: top;
+  background-position: top center;
   z-index: -1;
-  will-change: filter;
-  filter: blur(0px);
-  transition: filter var(--transition-normal);
 }
 
 .hero::after {
@@ -84,57 +66,99 @@
   background: var(--color-overlay);
   transition: background var(--transition-normal);
 }
-    
-
-
 
 .hero-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    color: var(--color-secondary);
-    text-shadow: 2px 2px 10px rgb(0,0,0,0.5);
-    transition: opacity 0.2 ease-out, transform 0.2;
-    will-change: opacity, transform;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  color: var(--color-secondary);
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+  transition: opacity 0.2s ease-out, transform 0.2s;
+  will-change: opacity, transform;
+  text-align: center;
 }
-.content {
-    margin-top: 100vh;
-    min-height: 200vh;
-    background-color: white;
-    position: relative;
-   
-    
+/* Header, Logo og side titel */
+.page-title {
+  position: fixed;
+  left: 50vw; /* Rammer præcis midten af skærmens samlede bredde */
+  top: 40px;  /* Bliver placeret i den lodrette midte af din 80px høje header */
+  transform: translate(-50%, -50%);
+  
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-heading);
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  text-align: center;
+  white-space: nowrap;
+  pointer-events: none; /* Forhindrer at teksten blokerer for klik på logo eller burgermenu */
+  z-index: 1200;
+}
+.logo {
+  width: 100px;
+  height: auto;
+  display: block;
+  /* Tilføjer drop-shadow og transform til transition, så animationen bliver glidende */
+  transition: transform 0.3s ease, filter 0.3s ease, width 0.3s ease;
+  border-radius: 8px; /* Valgfrit: sikrer bløde hjørner ved glød */
 }
 
-.container{
-    display: grid;
-    /*grid-template-columns: auto 20fr 20fr; /*første kolone er auto, anden er 6fr og sidste er 4fr*/
-    grid-template-areas: /*kolone 1 er header, 2 kolone er header 2 osv (lodret)*/ 
-    'header' 'header' 'header'
-    'main' 'main' 'main'
-    'footer' 'footer' 'footer';
-    grid-template-rows: 250px auto 100px; /*header er 250px, main er auto og footer er 100px*/
-    width: 100vw;
-    max-width: 1500px; /*viden er 100% men kan ikke overstige 1500px*/
-    margin:auto; /*sørger for at alt er centreret uanset brede*/
-    padding: 1px; /*afstanden mellem content og border*/
-    gap: 20px; /*viser hvor stor afstand de er imellem rows og columns*/
-    background-color: rgba(36, 35, 35, 0);
-    height: auto;
-    min-height: 100vh; /*viewport = 1% af skærmens height*/
+/* Logo hover-effekt (oplysning + forstørrelse) */
+.logo:hover {
+  /* Forstørrer logoet med 8% */
+  transform: scale(1.08); 
+  
+  /* Giver den samme hvide/lysende glød som din knap (box-shadow virker ikke optimalt på PNG uden baggrund) */
+  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.6));
+}
+
+/* Active state når man klikker på logoet */
+.logo:active {
+  transform: scale(1.02);
+}
+
+
+
+/* VISUEL HEADER-BJÆLKE (Fjernet backdrop-filter der låste menuen) */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 150px;
+  background-color: rgba(10, 10, 10, 0.92); 
+  border-bottom: 2px solid var(--color-primary); 
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); 
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+  z-index: 1000; /* Lavere end menuen */
+}
+.header a {
+  pointer-events: auto;
+  display: inline-block;
+}
+
+/* SIKRER AT MAIN INDHOLD IKKE SKJULES BAG HEADEREN */
+.container {
+  padding-top: 100px;
 }
 
 /* BURGER MENU WRAPPER */
 .menu-wrapper {
   position: fixed;
-  top: 1rem;
-  right: 1rem;
-  z-index: 2000;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 3000; /* Ligger helt øverst */
+  pointer-events: auto;
 }
 
-/* BURGER ICON */
 .burger {
   width: 2rem;
   height: 1.375rem;
@@ -142,19 +166,35 @@
   flex-direction: column;
   justify-content: space-between;
   cursor: pointer;
-  z-index: 3000; /* over overlay */
+  z-index: 3001;
+
+  transition: transform 0.3 ease, filter 0.3 ease;
 }
 
 .burger span {
-  height: 0.1875rem;
-  background:var(--color-black);
+  height: 0.2rem;
+  background: #ffffff; /* Rettet til hvid så de kan ses på mørk baggrund */
   border-radius: 999px;
   transition: 0.3s ease;
 }
 
+.burger:hover {
+    transform: scale(1.10);
+
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
+}
+
+.burger:hover span {
+    background-color: #ffffff;
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
+}
+
+.burger:active {
+    transform: scale(1.02);
+}
 
 .burger.open span:nth-child(1) {
-  transform: translateY(0.4375rem) rotate(45deg);
+  transform: translateY(0.55rem) rotate(45deg);
 }
 
 .burger.open span:nth-child(2) {
@@ -162,87 +202,747 @@
 }
 
 .burger.open span:nth-child(3) {
-  transform: translateY(-0.4375rem) rotate(-45deg);
+  transform: translateY(-0.55rem) rotate(-45deg);
+}
+html.menu-open,
+body.menu-open {
+  overflow: hidden !important;
+  height: 100vh;
+  touch-action: none; /* Forhindrer scroll-swipes på mobil/touch-skærme */
 }
 
-/* FULLSCREEN MENU */
+/* FULLSCREEN DROPDOWN MENU */
 .dropdown {
   position: fixed;
-  inset: 0; /* fylder hele skærmen */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   background: var(--color-primary); 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   gap: 2rem;
-
   opacity: 0;
+  
+  /* LØSNING: Skjuler menuen helt for musen og skærmlæsere, når den er lukket */
+  visibility: hidden;
   pointer-events: none;
+  
   transform: scale(1.05);
-  transition: opacity 0.4s ease, transform 0.4s ease;
+  transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s ease;
+  z-index: 2500;
 }
 
-/* FADE-IN AKTIVERING */
+/* ÅBEN MENU */
 .dropdown.open {
   opacity: 1;
+  
+  visibility: visible;
   pointer-events: auto;
+  
   transform: scale(1);
 }
 
-/* LINKS */
 .dropdown a {
-  color: var(--text-dark);
-  font-size: 2rem;
+  padding: 0.8rem 1.6rem;       
+  color: var(--text-dark); /* Lys tekst i menuen */
   text-decoration: none;
-  letter-spacing: 2px;
-  font-family: "Montserrat", sans-serif;
+  font-size: 1.6rem;
+  font-weight: 600;
   transition: 0.3s ease;
-  cursor: default;
 }
 
 .dropdown a:hover {
   color: var(--text-dark);
   transform: scale(1.1);
-  font-weight: 700;
+  font-weight: 900;
+}
+body.menu-open {
+  overflow: hidden;
 }
 
-/*main indhold*/
-
-.main {
-    grid-area: main;
-    padding: 30px;
-    display: flex; /*flexboxen sikre at alt inde i den bliver placeret endten på langs eller stablet*/
-    flex-direction: column;
-    align-items:center;
-    justify-content: center;
-    max-width: 100%; /* indholdet bliver ikke bredere end containeren*/
-   
-}
-.main-flex {
-    display: flex;
-    flex-wrap: wrap; /* gør alt indei flexboxen responsivt*/
-    justify-content: center;
-    gap: 20px;
-    
-}
-/*footer*/
-
-.footer {
+/* Main Indhold */
+.main, 
+.grid {
+  grid-area: main;
+  padding: 30px;
   display: flex;
   flex-direction: column;
-  align-items: center;     /* centrerer horisontalt */
-  justify-content: center; /* centrerer vertikalt */
-  text-align: center;
-  padding: 2rem 1rem;
-  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.main-flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
   width: 100%;
 }
+
+/* Frontpage Text */
+.main-intro-text {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.main-intro-text h1 {
+  font-family: var(--font-main);
+  color: #ffffff;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+
+.main-intro-text p {
+  color: var(--color-accent);
+  font-family: var(--font-main);
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.main-button {
+  display: block;
+  background-color: transparent;
+  margin: 20px auto;
+  text-align: center;
+  color: #ffffff;
+  font-family: var(--font-main);
+  font-weight: 700;
+  letter-spacing: 2px;
+  border: none;
+}
+
+h1 {
+  color: var(--color-accent);
+}
+
+/* About Me */
+.frontpage-picture {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+}
+
+.about-me-container {
+  max-width: 900px;
+  width: 100%;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.35);
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.about-me-image {
+  width: 50%;
+  max-width: 650px;
+  height: auto;
+  border-radius: 10px;
+  margin: 20px auto;
+  display: block;
+}
+
+.about-me-text1,
+.about-me-text2 {
+  font-family: var(--font-main);
+  color: #ffffff;
+  line-height: 1.7rem;
+}
+
+.about-me-text2 {
+  margin-top: 20px;
+}
+
+/* My Projects (edu.html) */
+.projects-section {
+  padding: 40px 20px;
+  width: 100%;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.project-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 60px;
+  width: 100%;
+}
+
+.project {
+  background: rgba(0, 0, 0, 0.35);
+  padding: 20px;
+  border-radius: 10px;
+  width: calc(50% - 40px);
+  max-width: 600px;
+  min-width: 280px;
+  color: #ffffff;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.project h2,
+.project p {
+  font-family: var(--font-main);
+  line-height: 1.6rem;
+  color: #ffffff;
+}
+
+.project h2 {
+  margin-bottom: 15px;
+}
+
+.project p {
+  margin-top: 10px;
+}
+
+.project img, 
+.project video {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  margin-top: 10px;
+}
+
+.floating-box-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 80px;
+  background-color: transparent;
+  color: #ffffff;
+}
+
+.floating-box {
+  width: 100px;
+  height: 100px;
+  background-color: rgba(8, 1, 15, 0.623);
+  border-radius: 30px;
+  color: #ffffff;
+  animation: float 10s ease-in-out infinite;
+}
+.contact2 {
+  max-width: 550px;
+  margin: 40px auto;
+  padding: 35px 30px;
+  background-color: rgba(15, 15, 20, 0.75); /* Mørk, halvtids gennemsigtig baggrund */
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  backdrop-filter: blur(10px); /* Giver en flot 'frosted glass' effekt mod baggrunden */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  font-family: var(--font-main); /* Rajdhani */
+  z-index: 10;
+  position: relative;
+}
+
+/* Overskrift */
+.contact2 h2 {
+  font-family: var(--font-heading); /* Orbitron */
+  font-size: 1.8rem;
+  color: var(--color-accent, #ffffff);
+  text-align: center;
+  margin-bottom: 25px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* Layout for selve formularen */
+.contact2 form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Labels over inputfelterne */
+.contact2 label {
+  font-family: var(--font-main);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #d0d0d0;
+  letter-spacing: 1px;
+  margin-bottom: -10px; /* Trækker tekst og felt lidt tættere sammen */
+}
+
+/* Inputfelter og Tekstfelt */
+.contact2 input,
+.contact2 textarea {
+  width: 100%;
+  padding: 14px 16px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  color: #ffffff;
+  font-family: var(--font-main);
+  font-size: 1.1rem;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+  z-index: 1001;
+}
+
+/* Placeholder-tekst styling */
+.contact2 input::placeholder,
+.contact2 textarea::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+  font-family: var(--font-main);
+}
+
+/* Når brugeren klikker i et felt (Focus State) */
+.contact2 input:focus,
+.contact2 textarea:focus {
+  outline: none;
+  border-color: var(--color-primary, #ffffff);
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.2);
+}
+
+/* Fast størrelse på tekstfeltet */
+.contact2 textarea {
+  height: 140px;
+  resize: none; /* Forhindrer at brugeren kan forrykke layoutet ved at trække i hjørnet */
+}
+
+/* Send-knap */
+.contact2 button {
+  margin-top: 10px;
+  padding: 15px;
+  background-color: var(--color-primary, #ffffff);
+  color: #000000;
+  border: none;
+  border-radius: 6px;
+  font-family: var(--font-heading); /* Orbitron på knappen */
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Hover-effekt på knappen */
+.contact2 button:hover {
+  background-color: #ffffff;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+.contact2 button:active {
+  transform: translateY(0);
+}
+/* ==========================================
+   SLIDER & MODAL (MOBILE-FIRST)
+   ========================================== */
+
+.slider-section {
+    width: 100%;
+    padding: 0 10px;
+    margin: 20px auto;
+}
+
+/* Container med fast aspect-ratio for at undgå layout-hop */
+.slider-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3; /* Optimalt format på mobilskærme */
+    overflow: hidden;    /* Forhindrer sidelæns scroll på siden */
+    border-radius: 8px;
+    background-color: rgba(10, 10, 15, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+.slides-wrapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+/* Individual Slides */
+.slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.slide.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* VIGTIGT: contain viser hele kunstværket uden at skære i det */
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; 
+    padding: 10px;
+    pointer-events: none;
+}
+
+/* Caption Tekst i Bunden */
+.slide-caption {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 12px 10px 25px 10px;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+    color: #ffffff;
+    text-align: center;
+    font-family: var(--font-main);
+}
+
+.slide-caption h3 {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    color: var(--color-accent, #ffffff);
+}
+
+.slide-caption p {
+    margin: 3px 0 0 0;
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+/* Navigationspile (Mobil) */
+.prev-btn, .next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.6);
+    color: #ffffff;
+    border: none;
+    font-size: 1.2rem;
+    padding: 8px 12px;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 4px;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.prev-btn:hover, .next-btn:hover {
+    background: var(--color-primary, #ffffff);
+    color: #000000;
+}
+
+.prev-btn { left: 8px; }
+.next-btn { right: 8px; }
+
+/* Indikator Prikker */
+.dots-container {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.dot.active {
+    background: var(--color-primary, #ffffff);
+    transform: scale(1.3);
+}
+
+/* POP-UP MODAL (SPECIFIKATIONER) */
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 4000;
+}
+
+.modal.open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.modal-content {
+    background: rgba(20, 20, 25, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 25px 20px;
+    border-radius: 12px;
+    max-width: 450px;
+    width: 90%;
+    color: #ffffff;
+    font-family: var(--font-main);
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+}
+
+.modal-content h2 {
+    font-family: var(--font-heading);
+    color: var(--color-accent, #ffffff);
+    margin-top: 0;
+    font-size: 1.5rem;
+}
+
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #aaa;
+}
+
+.close-modal:hover { color: #ffffff; }
+
+/* ==========================================
+   GALLERI GRID & FILTRERING (MOBILE-FIRST)
+   ========================================== */
+.gallery-heading {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-top: 10px;
+    margin-bottom: 20px; /* Skaber god afstand ned til billedgriddet */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15); /* Diskræt skillelinje under teksten */
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+
+.gallery-section {
+    width: 100%;
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 15px;
+}
+
+/* FILTRERINGSKNAPPER */
+.filter-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.filter-btn {
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: var(--color-primary, #ffffff);
+    color: #000000;
+    border-color: var(--color-primary, #ffffff);
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
+}
+
+/* GRID CONTAINER */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Mobil: 1 kolonne */
+    gap: 25px;
+    width: 100%;
+    box-sizing: border-box;
+    grid-auto-rows: min-content;
+    align-items: start;
+}
+
+/* GRID ELEMENTER */
+.gallery-item {
+    cursor: pointer;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    grid-column: auto;
+}
+
+/* Gemmer ufiltrerede kort pænt */
+.gallery-item.hide {
+    display: none;
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1; /* Kvadratiske billedkort for et ensartet grid */
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: rgba(10, 10, 15, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    cursor: pointer;
+}
+
+.card-inner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Udfylder kvadratet pænt */
+    transition: transform 0.4s ease;
+    display: block;
+}
+
+.info-btn {
+    width: 100%;
+    padding: 10px;
+    background: transparent;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 8px;
+    font-size: var(--font-main);
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2 ease, border-color 0.2 ease;
+}
+.info-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: #ffffff;
+}
+
+/* HOVER OVERLAY TEKST */
+.card-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 15px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.card-overlay h3 {
+    font-family: var(--font-heading);
+    color: var(--color-accent, #ffffff);
+    margin: 0 0 5px 0;
+    font-size: 1.2rem;
+}
+
+.card-overlay span {
+    font-family: var(--font-main);
+    font-size: 0.8rem;
+    color: var(--color-primary, #ffffff);
+    letter-spacing: 1.5px;
+}
+
+/* Desktop Hover Effect */
+.card-inner:hover img {
+    transform: scale(1.08);
+}
+
+.card-inner:hover .card-overlay {
+    opacity: 1;
+}
+.media-modal {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.media-modal.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.media-modal-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 85vh;
+    background: #000;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+}
+
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: #fff;
+    font-size: 32px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10;
+    line-height: 1;
+}
+
+/* Sørger for at indholdet (billede eller video) altid passer til skærmen */
+#mediaContainer img,
+#mediaContainer video {
+    display: block;
+    max-width: 100%;
+    max-height: 80vh;
+    object-fit: contain;
+}
+
+
+/* Footer Layout */
+footer {
+  grid-area: footer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  padding: 2rem 1rem;
+  gap: 1rem;
+}
+
 .footer-buttons {
   display: flex;
-  flex-wrap: wrap;         /* gør den mobil-venlig */
-  justify-content: center; /* centrerer knapper */
+  justify-content: center;
+  align-items: center;
   gap: 1rem;
+  flex-wrap: wrap;
   width: 100%;
 }
 
@@ -254,369 +954,132 @@
   color: #fff;
   cursor: pointer;
 }
+
 .footer-buttons button:hover {
-  background: #ddb982;
+  background: #ffffff;
   box-shadow: 0 0 12px rgba(221, 185, 130, 0.6);
   transform: translateY(-2px);
   font-weight: 700;
-}
-    
-
-
-
-/* front page */
-
-.main-intro-text {
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto; /*udevendig afstand mellem grid*/
-    padding: 20px;
-}
-.main-intro-text h1 {
-    font-family: "Montserrat", sans-serif;
-    color: #ffffff;
-    margin-bottom: 1rem; /*16px*/
-    font-size: 2rem; /*32px*/
-    
-}
-.main-intro-text p {
-    color: #c9d8e2;
-    font-family: "Montserrat", sans-serif;
-    font-size: 1rem;
-    margin-bottom: 1rem;
-    
+  color: #000000;
 }
 
-.main-button {
-    display: block;
-    background-color: #00000000;
-    margin: 20px auto;
-    text-align: center;
-    color: #ffffff;
-    font-family: "montserrat", sans-serif;
-    font-weight: 700;
-    letter-spacing: 2px;
-    border: 10px;
-}
 
-* { /*alleelementer på siden får samme regl som er box-sizing*/
-    box-sizing: border-box; /*ændre måden at bredden og højden i elementet beregnes*/
-}
+/* Responsive Media Queries */
+@media (min-width: 768px) {
+  .header {
+    padding: 1.5rem 2rem;
+  }
 
-.slider {
-    width: 600px;
-    text-align: center;
-    overflow: hidden; /*gemmer alt indhold i sliderene, hvis det har en brede på mere end 500px*/
-    
-    
-    
-}
-.slides {
-    display: flex;
+  .logo {
+    width: 160px;
+  }
 
-    overflow-x: auto; /*man kan scrolle horisontalt, når mine billeder kan være højere end slideren*/
-    scroll-behavior: auto; /*scrollen sker uden animationer og den bestemmer, hvordan min scrol skal forgår*/
-    
-    scroll-behavior: smooth; /*laver en smooth transaction mellem de andre slides*/
-    
-}
+  .burger {
+    width: 4.5rem;
+    height: 3.3rem;
+  }
 
-.slides > div {
-    scroll-snap-align: start;
-    flex-shrink: 0; /*fohindre at sliderens bredde bliver mindre end 600px*/
-    width: 600px;
-    height: 500px;
-    margin-right: 5px; /*afstanden mellem slidsne*/
-    border-radius: 10px;
-    background: #462829;
-    transform-origin: center center;
-    transform: scale(1);
-    
-    position: relative; /*sikre at elementer inde i slideren forbliver i denne container*/
-
-    display: flex;
+  footer {
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-size: 100px;
-    
-}
-
-.slides > div:target { /*den tager fra div-slide billederne*/
-transform: scale(1.0); /*slideren bevare en normal størrelse */
-}
-
-
-
-.slider > a {
-  display: inline-flex; /*indholdet kan centreers både lodret og vandret*/
-  width: 16px;
-  height: 16px;
-  background: white;
-  text-decoration: none; /*fjerne underline af link*/
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  margin: 0 5px;
-  position: relative;
-  
-}
-.slider >a:active {
-    top:1px; /*når man klikke på link, så vil elementet flytte sig med 1px nedad*/
-}
-.slider > a:focus {
-    background: #000000;
-}
-
-.myproject.html {
-    background-color: #000000;
-}
-
-h1 {
-    color: #c9d8e2;
-}
-/*about me*/
-.frontpage-picture {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    padding: 40px 40px; /*giver 40px mellem border og content på begge sider*/
-}
-.about-me-container {
-    max-width: 900px; /*max bredde på 900px i containerne, men kan stadig eskalere ned til width med 100%*/
-    width: 100%;
     text-align: center;
-    background-color: #0000005b;
-}
-.about-me-image {
-    width: 50%; /*billede fylder 50% af containeren, men ikke mere end 650px*/
-    max-width: 650px;
-    height: auto; /*sikre at billedet proportioner ikke ændres*/
-    border-radius: 10px;
-    margin: 20px auto; /*centrer billedet horisontalt men giver vertikal afstand*/
-    display: flex;
-}
-.about-me-text2 {
-    font-family: "Montserrat", sans-serif;
-    color: #ffffff;
-    line-height: 1.7rem;
-    margin-top: 20px;
-}
-.about-me-text1 {
-    font-family: "montserrat",sans-serif;
-    color: #ffffff;
+  }
 }
 
-/*my projects*/
-.projects-section {
-    padding: 40px 20px; /*centrere teksten og sikre at sektionen fylder hele bredden*/
+@media (max-width: 768px) {
+  .project {
     width: 100%;
-    text-align: center;
-    margin: 0 auto; /*centere container horisontalt*/
-}
-.project-row {
-    display:flex;
-    flex-wrap: wrap; /*projekterne ligger i en fleksibel række men kan wrappes til næste linje ved mindre skærme*/
-    justify-content: center;
-    gap: 40px;
-    margin-bottom: 60px; /*der er 60px afstand til næste sektion*/
-}
-.project {
-    background: #0000005b;
-    padding: 20px;
-    border-radius: 10px;
-    width: calc(50% - 40px);
-    max-width: 600px;
-    min-width: 280px;
-    color: #ffffff;
-    text-align: center;
-}
-.project h2 {
-    font-family: "Montserrat", sans-serif;
-    line-height: 1.6rem;
-    margin-bottom: 15px;
-    color: #ffffff;
-}
-.project p {
-    font-family: "Montserrat", sans-serif;
-    line-height: 1.6rem;
-    margin-top: 10px;
-    color: #ffffff;
-} 
-.project img, 
-.project video {
-    width: 100%;
-    height: auto;
-    border-radius: 6px;
-    margin-top: 10px;
-}
-.floating-box-wrapper {
-    display: flex;
-    justify-content: center;
-    margin-top: 80px;
-    background-color: #00000000;
-    color: #ffffff;
-    
-}
-.floating-box {
-    width: 100px;
-    height: 100px;
-    background-color: rgba(8, 1, 15, 0.623);
-    border-radius: 30px;
-    color: #ffffff;
-    animation: float 10s ease-in-out infinite;
+  }
 
+  .floating-box-wrapper {
+    width: 130px;
+    height: 130px;
+  }
+}
+/* Responsive tilpasning til desktop */
+@media (min-width: 768px) {
+  .contact2 {
+    padding: 45px 40px;
+  }
 
-    
+  .contact2 h2 {
+    font-size: 2.2rem;
+  }
 }
 
-
-/*contact*/
-
-.flex-container {
-    display: flex;
-    justify-content: left;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    align-content: flex-start;
-    height: 100%;
-    gap: 40px;
-    max-width: 1000px;
-    background-color: #31010100;
-}
-.contact1 {
-    flex: 1;
-    font-family: "Montserrat", sans-serif;
-    font-weight: 550;
-    letter-spacing: 2px;
-    color: white;
-}
-
-.contact2 {
-    max-width: 500px;
-    margin: auto;
-    padding: 20px;
-    background-color: rgba(240, 248, 255, 0.021);
-    border-radius: 10px;
-    color: #ffffff;
-    font-family: "Montserrat", sans-serif;
-    font-weight: 550;
-    letter-spacing: 2px;
-}
-
-.contact2 h2 {
-    text-align: center;
-    margin-bottom: 20px;
-}
-.contact2 form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-
-}
-.contact2 label {
-    font-size: 0.9rem;
-
-}
-.contact2 input,
-.contact2 textarea {
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    width: 100%;
-
-}
-.contact2 textarea {
-    height: 120px;
-    resize: vertical;
-
-}
-.contact2 button {
-    padding: 12px;
-    background: black;
-    color: aliceblue;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    letter-spacing: 2px;
-    transition: 0.2s;
-
-}
-
-.contact2 button:hover {
-    background-color: aqua;
-    
-}
-
-
-
-    
-
-
-
-@media screen and (min-width: 1024px) {
-    .header {
-        display: flex !important;
-        justify-content: space-between !important;
-        width: 100vw !important; /* Tvinger den til at bruge skærmbredden */
-        left: 0;
-        right: 0;
-    }
-
-    .header-buttons {
-        display: flex !important;
-        flex-direction: row !important;
-        margin-right: 50px; /* Giver den lidt afstand fra selve kanten */
-    }
-}
-
-    .logo {
-        max-width: 150px;
-        flex-direction: row;
-    }
-    .header-buttons button {
-        font-size:0.85rem;
-        padding:0.7em 1.2em;
-        flex-direction: row;
-        
-    }
-
-@media (max-width: 900px) {
-    .procets {
-        max-width: 100%;
-        max-width: none;
-    }
-}
-
-@media (max-wdht: 768px) {
-    .floating-box-wrapper {
-        width: 130px;
-        height: 130px;
-    }
-}
 
 @keyframes float { 
-    0% {
-        transform: rotate(90deg);
-    }
-    
-    25% {
-        transform: rotate(180deg);
-        background-color: antiquewhite;
+  0% { transform: rotate(90deg); }
+  25% { transform: rotate(180deg); background-color: antiquewhite; }
+  50% { transform: rotate(270deg); background-color: aqua; }
+  75% { transform: rotate(360deg); background-color: bisque; }
+  100% { transform: rotate(450deg); background-color: azure; }
+}
+
+@media (min-width: 768px) {
+  .page-title {
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+  }
+}
+@media (min-width: 768px) {
+    .slider-section {
+        max-width: 850px;
+        padding: 0 20px;
     }
 
-    50% {
-        transform:  rotate(270deg);
-        background-color: aqua;
+    .slider-container {
+        aspect-ratio: 16 / 9; /* Skifter til bredformat på pc */
+        border-radius: 12px;
     }
 
-    75% {
-        transform:  rotate(360deg);
-        background-color: bisque;
+    .slide img {
+        padding: 20px;
     }
 
-    100% {
-        transform: rotate(450deg);
-        background-color: azure;
+    .slide-caption h3 {
+        font-size: 1.4rem;
+    }
+
+    .slide-caption p {
+        font-size: 0.95rem;
+    }
+
+    .prev-btn, .next-btn {
+        padding: 12px 18px;
+        font-size: 1.6rem;
+        border-radius: 6px;
+    }
+
+    .prev-btn { left: 15px; }
+    .next-btn { right: 15px; }
+
+    .dot {
+        width: 12px;
+        height: 12px;
+    }
+}
+/* RESPONSIVE LAYOUT (Tablets & Desktop) */
+@media (min-width: 600px) {
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 kolonner */
+    }
+}
+
+@media (min-width: 900px) {
+    .gallery-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 kolonner */
+    }
+}
+@media (min-width: 600px) {
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+@media (min-width: 992px) {
+    .gallery-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
     }
 }
