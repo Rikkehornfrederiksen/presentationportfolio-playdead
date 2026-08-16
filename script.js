@@ -1,109 +1,89 @@
 console.log("Rikke Horn Frederiksen");
 
-window.addEventListener('scroll', function() {
-    const hero = document.getElementById('hero-background');
-    if (hero) {
-        let scrollPosition = window.pageYOffset;
-        
-        // Vi dividerer med et højere tal (f.eks. 100) for at gøre sløringen langsommere
-        let blurValue = scrollPosition / 100; 
-
-        // Sæt et lavt max (f.eks. 8px). Det er nok til at gøre baggrunden rolig, 
-        // men ikke så meget at det ligner en fejl eller gør ondt i øjnene.
-        if (blurValue > 8) blurValue = 8;
-
-        hero.style.filter = `blur(${blurValue}px)`;
-    }
-});
-
+// ==========================================
+// SCROLL-EFFEKTER (HERO SLØRING & TEXT FADE)
+// ==========================================
 window.addEventListener('scroll', function() {
     const heroBg = document.getElementById('hero-background');
     const heroText = document.getElementById('hero-text');
     
     let scrollPosition = window.pageYOffset;
 
-    // 1. Håndter baggrunds-sløring (max 8px for at skåne øjnene)
+    // 1. Håndter baggrunds-sløring (max 8px)
     if (heroBg) {
         let blurValue = scrollPosition / 100;
         if (blurValue > 8) blurValue = 8;
         heroBg.style.filter = `blur(${blurValue}px)`;
     }
 
-    // 2. Håndter tekst-fade (fader ud over 300 pixels scroll)
+    // 2. Håndter tekst-fade
     if (heroText) {
         let textOpacity = 1 - (scrollPosition / 300);
-        
         if (textOpacity < 0) textOpacity = 0;
         heroText.style.opacity = textOpacity;
-        
-        // Valgfrit: Flyt teksten lidt opad mens den fader for en "float" effekt
         heroText.style.transform = `translateY(-${scrollPosition * 0.2}px)`;
     }
 });
 
+
+// ==========================================
+// BURGER-MENU & DROPDOWN
+// ==========================================
 const burger = document.getElementById('burger');
 const dropdown = document.getElementById('dropdown');
 
-// Funktion til at åbne/lukke scroll
 function toggleScroll(isOpen) {
-  if (isOpen) {
-    document.body.classList.add('menu-open');
-    document.documentElement.classList.add('menu-open');
-  } else {
-    document.body.classList.remove('menu-open');
-    document.documentElement.classList.remove('menu-open');
-  }
+    if (isOpen) {
+        document.body.classList.add('menu-open');
+        document.documentElement.classList.add('menu-open');
+    } else {
+        document.body.classList.remove('menu-open');
+        document.documentElement.classList.remove('menu-open');
+    }
 }
 
-// Åbn/luk burger
-burger.addEventListener('click', (event) => {
-  event.stopPropagation();
-  
-  const isOpen = burger.classList.toggle('open');
-  dropdown.classList.toggle('open');
-  
-  toggleScroll(isOpen);
-});
+if (burger && dropdown) {
+    burger.addEventListener('click', (event) => {
+        event.stopPropagation();
+        const isOpen = burger.classList.toggle('open');
+        dropdown.classList.toggle('open');
+        toggleScroll(isOpen);
+    });
 
-// Klik på baggrunden lukker menuen
-dropdown.addEventListener('click', (event) => {
-  if (event.target === dropdown) {
-    burger.classList.remove('open');
-    dropdown.classList.remove('open');
-    toggleScroll(false);
-  }
-});
+    dropdown.addEventListener('click', (event) => {
+        if (event.target === dropdown) {
+            burger.classList.remove('open');
+            dropdown.classList.remove('open');
+            toggleScroll(false);
+        }
+    });
+}
 
 
-// Klik på baggrunden lukker menuen
-dropdown.addEventListener('click', (event) => {
-  // Hvis man klikker på baggrunden (ikke links)
-  if (event.target === dropdown) {
-    burger.classList.remove('open');
-    dropdown.classList.remove('open');
-  }
-});
-
+// ==========================================
+// KONTAKTFORMULAR EVENT STOPPING
+// ==========================================
 document.addEventListener("DOMContentLoaded", function () {
-  const textarea = document.querySelector(".contact2 textarea");
-  const contactBox = document.querySelector(".contact2");
+    const textarea = document.querySelector(".contact2 textarea");
+    const contactBox = document.querySelector(".contact2");
 
-  // Forhindrer at klik inde i tekstfeltet lukker forældre-boksen
-  if (textarea) {
-    textarea.addEventListener("click", function (event) {
-      event.stopPropagation();
-    });
-  }
+    if (textarea) {
+        textarea.addEventListener("click", function (event) {
+            event.stopPropagation();
+        });
+    }
 
-  // Hvis hele formularen driller, stopper vi kliks i hele boksen:
-  if (contactBox) {
-    contactBox.addEventListener("click", function (event) {
-      event.stopPropagation();
-    });
-  }
+    if (contactBox) {
+        contactBox.addEventListener("click", function (event) {
+            event.stopPropagation();
+        });
+    }
 });
 
-// --- SLIDER & MODAL FUNKTIONALITET ---
+
+// ==========================================
+// SLIDER & MODAL FUNKTIONALITET
+// ==========================================
 const slides = document.querySelectorAll('.slide');
 const prevBtn = document.getElementById('prevBtn');
 const nextBtn = document.getElementById('nextBtn');
@@ -113,14 +93,15 @@ const slidesWrapper = document.getElementById('slidesWrapper');
 let currentSlide = 0;
 
 if (slides.length > 0) {
-    // 1. Generer prikker dynamisk efter antal slides
-    slides.forEach((_, index) => {
-        const dot = document.createElement('div');
-        dot.classList.add('dot');
-        if (index === 0) dot.classList.add('active');
-        dot.addEventListener('click', () => goToSlide(index));
-        dotsContainer.appendChild(dot);
-    });
+    if (dotsContainer) {
+        slides.forEach((_, index) => {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            if (index === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => goToSlide(index));
+            dotsContainer.appendChild(dot);
+        });
+    }
 
     const dots = document.querySelectorAll('.dot');
 
@@ -138,164 +119,201 @@ if (slides.length > 0) {
         updateSlides();
     }
 
-    nextBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        currentSlide = (currentSlide + 1) % slides.length;
-        updateSlides();
-    });
-
-    prevBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-        updateSlides();
-    });
-
-    // 2. Touch/Swipe funktionalitet til mobil
-    let touchStartX = 0;
-    let touchEndX = 0;
-
-    slidesWrapper.addEventListener('touchstart', (e) => {
-        touchStartX = e.changedTouches[0].screenX;
-    }, { passive: true });
-
-    slidesWrapper.addEventListener('touchend', (e) => {
-        touchEndX = e.changedTouches[0].screenX;
-        handleSwipe();
-    }, { passive: true });
-
-    function handleSwipe() {
-        const swipeThreshold = 40; // Hvor mange px fingeren skal flyttes for at skifte
-        if (touchStartX - touchEndX > swipeThreshold) {
-            // Swiped venstre -> Næste slide
+    if (nextBtn) {
+        nextBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
             currentSlide = (currentSlide + 1) % slides.length;
             updateSlides();
-        } else if (touchEndX - touchStartX > swipeThreshold) {
-            // Swiped højre -> Forrige slide
+        });
+    }
+
+    if (prevBtn) {
+        prevBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
             currentSlide = (currentSlide - 1 + slides.length) % slides.length;
             updateSlides();
+        });
+    }
+
+    // Touch/Swipe
+    if (slidesWrapper) {
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        slidesWrapper.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        slidesWrapper.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, { passive: true });
+
+        function handleSwipe() {
+            const swipeThreshold = 40;
+            if (touchStartX - touchEndX > swipeThreshold) {
+                currentSlide = (currentSlide + 1) % slides.length;
+                updateSlides();
+            } else if (touchEndX - touchStartX > swipeThreshold) {
+                currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                updateSlides();
+            }
         }
     }
 
-    // 3. Modal (Pop-up) specifikationer
+    // Art Modal
     const modal = document.getElementById('artModal');
     const closeModal = document.getElementById('closeModal');
 
-    slides.forEach(slide => {
-        slide.addEventListener('click', () => {
-            document.getElementById('modalTitle').textContent = slide.dataset.title;
-            document.getElementById('modalYear').textContent = slide.dataset.year;
-            document.getElementById('modalTech').textContent = slide.dataset.tech;
-            document.getElementById('modalDesc').textContent = slide.dataset.desc;
-            
-            modal.classList.add('open');
-        });
-    });
+    if (modal) {
+        slides.forEach(slide => {
+            slide.addEventListener('click', () => {
+                const titleEl = document.getElementById('modalTitle');
+                const yearEl = document.getElementById('modalYear');
+                const techEl = document.getElementById('modalTech');
+                const descEl = document.getElementById('modalDesc');
 
-    closeModal.addEventListener('click', () => modal.classList.remove('open'));
-    
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) modal.classList.remove('open');
-    });
-}
-
-// --- GALLERI FILTRERING & MODAL ---
-const filterBtns = document.querySelectorAll('.filter-btn');
-const galleryItems = document.querySelectorAll('.gallery-item');
-
-if (galleryItems.length > 0) {
-    // 1. Filtreringslogik
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            // Skift aktiv knap
-            filterBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-
-            const filterValue = btn.dataset.filter;
-
-            galleryItems.forEach(item => {
-                const itemCategory = item.dataset.category;
-
-                if (filterValue === 'all' || filterValue === itemCategory) {
-                    item.classList.remove('hide');
-                } else {
-                    item.classList.add('hide');
-                }
+                if (titleEl) titleEl.textContent = slide.dataset.title || '';
+                if (yearEl) yearEl.textContent = slide.dataset.year || '';
+                if (techEl) techEl.textContent = slide.dataset.tech || '';
+                if (descEl) descEl.textContent = slide.dataset.desc || '';
+                
+                modal.classList.add('open');
             });
         });
-    });
 
-    // 2. Klik på galleri-kort åbner Pop-up Modal
-    const artModal = document.getElementById('artModal');
-    const closeModal = document.getElementById('closeModal');
-
-    galleryItems.forEach(item => {
-        item.addEventListener('click', () => {
-            document.getElementById('modalTitle').textContent = item.dataset.title;
-            document.getElementById('modalYear').textContent = item.dataset.year;
-            document.getElementById('modalTech').textContent = item.dataset.tech;
-            document.getElementById('modalDesc').textContent = item.dataset.desc;
-            
-            artModal.classList.add('open');
-        });
-    });
-
-    if (closeModal && artModal) {
-        closeModal.addEventListener('click', () => artModal.classList.remove('open'));
-        artModal.addEventListener('click', (e) => {
-            if (e.target === artModal) artModal.classList.remove('open');
+        if (closeModal) {
+            closeModal.addEventListener('click', () => modal.classList.remove('open'));
+        }
+        
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) modal.classList.remove('open');
         });
     }
 }
+
+
+// ==========================================
+// GALLERI FILTRERING & POPUP MODAL
+// ==========================================
 document.addEventListener('DOMContentLoaded', () => {
+
+    // 1. FILTRERING AF GALLERI
+    const filterBtns = document.querySelectorAll('.filter-btn');
     const galleryItems = document.querySelectorAll('.gallery-item');
+
+    if (filterBtns.length > 0) {
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filterValue = btn.dataset.filter;
+
+                galleryItems.forEach(item => {
+                    const itemCategory = item.dataset.type;
+
+                    if (filterValue === 'all' || filterValue === itemCategory) {
+                        item.classList.remove('hide');
+                    } else {
+                        item.classList.add('hide');
+                    }
+                });
+            });
+        });
+    }
+
+    // 2. MODAL ELEMENTER
     const mediaModal = document.getElementById('mediaModal');
     const mediaContainer = document.getElementById('mediaContainer');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDesc = document.getElementById('modalDesc');
     const closeModal = document.getElementById('closeModal');
 
-    galleryItems.forEach(item => {
-        item.addEventListener('click', (e) => {
-            // Hvis man trykker på "Læs om projektet", skal pop-up med billede/video IKKE åbne
-            if (e.target.classList.contains('info-btn')) {
-                return;
+    // 3. KLIK PÅ BILLEDE/CARD -> VIS KUN MEDIE
+  document.querySelectorAll('.card-inner').forEach(card => {
+        card.addEventListener('click', function(e) {
+            if (this.classList.contains('no-popup')) return;
+
+            e.preventDefault();
+            e.stopPropagation();
+
+            const galleryItem = this.closest('.gallery-item');
+            if (!galleryItem) return;
+
+            const type = galleryItem.getAttribute('data-type');
+            const mediaSrc = galleryItem.getAttribute('data-media');
+
+            // Tømmer titel og beskrivelse, så der KUN vises medie i popuppen
+            if (modalTitle) modalTitle.textContent = '';
+            if (modalDesc) modalDesc.textContent = '';
+
+            if (mediaContainer && mediaSrc) {
+                if (type === 'video') {
+                    mediaContainer.innerHTML = `
+                        <video controls autoplay style="width:100%; max-height:75vh;">
+                            <source src="${mediaSrc}" type="video/mp4">
+                        </video>
+                    `;
+                } else {
+                    mediaContainer.innerHTML = `<img src="${mediaSrc}" alt="Stort billede">`;
+                }
             }
 
-            const mediaType = item.getAttribute('data-type');
-            const mediaSrc = item.getAttribute('data-media');
-
-            if (!mediaSrc) return;
-
-            // Tøm containeren først
-            mediaContainer.innerHTML = '';
-
-            if (mediaType === 'video') {
-                // Skab et video-element til Moving Art projektet
-                mediaContainer.innerHTML = `
-                    <video controls autoplay style="width:100%;">
-                        <source src="${mediaSrc}" type="video/mp4">
-                    </video>
-                `;
-            } else {
-                // Skab et almindeligt billede-element til resten af kortene
-                mediaContainer.innerHTML = `<img src="${mediaSrc}" alt="Forstørret billede">`;
+            if (mediaModal) {
+                mediaModal.classList.add('open');
+                mediaModal.style.display = 'flex';
+                mediaModal.style.opacity = '1';
+                mediaModal.style.visibility = 'visible';
             }
+        });
+    });
+    // 4. KLIK PÅ KNAP -> VIS KUN TEKST
+    document.querySelectorAll('.open-modal-btn').forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
 
-            mediaModal.classList.add('open');
+            const title = button.getAttribute('data-title');
+            const desc = button.getAttribute('data-desc');
+
+            if (mediaContainer) mediaContainer.innerHTML = '';
+
+            if (modalTitle) modalTitle.textContent = title || '';
+            if (modalDesc) modalDesc.textContent = desc || '';
+
+            if (mediaModal) {
+                mediaModal.classList.add('open');
+                mediaModal.style.display = 'flex';
+                mediaModal.style.opacity = '1';
+                mediaModal.style.visibility = 'visible';
+            }
         });
     });
 
-    // Luk funktion
+    // 5. LUK POPUP FUNKTION
     function closePopup() {
         if (mediaModal) {
             mediaModal.classList.remove('open');
-            mediaContainer.innerHTML = ''; // Stopper videoen/fjerner billedet når der lukkes
+            mediaModal.style.display = 'none';
+            mediaModal.style.opacity = '0';
+            mediaModal.style.visibility = 'hidden';
+        }
+        if (mediaContainer) {
+            mediaContainer.innerHTML = '';
         }
     }
 
-    if (closeModal) closeModal.addEventListener('click', closePopup);
-    
+    if (closeModal) {
+        closeModal.addEventListener('click', closePopup);
+    }
+
     if (mediaModal) {
         mediaModal.addEventListener('click', (e) => {
-            if (e.target === mediaModal) closePopup();
+            if (e.target === mediaModal) {
+                closePopup();
+            }
         });
     }
+
 });
